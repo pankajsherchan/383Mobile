@@ -41,6 +41,13 @@ namespace Sp16p3g8MobileApp
 
 			Content = layout;
 
+			listView.ItemSelected += async (sender, e) => 
+			{
+				var todoItem = (Movie)e.SelectedItem;
+				var todoPage = new MovieDetailPage (todoItem); // so the new page shows correct data
+				await Navigation.PushAsync (todoPage);
+			};
+
 				}
 			}
 
