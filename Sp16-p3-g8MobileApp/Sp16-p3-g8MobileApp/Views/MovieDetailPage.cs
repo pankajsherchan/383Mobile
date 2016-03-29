@@ -52,10 +52,10 @@ namespace Sp16p3g8MobileApp
 					}
 				};
 //
-//				EditButton.Clicked +=(o,e) => 
-//				{
-//					Navigation.PushAsync( new EditmoviePage(movie));
-//				};
+				EditButton.Clicked +=(o,e) => 
+				{
+					Navigation.PushAsync( new MovieEditPage(movie));
+				};
 			}
 		}
 
