@@ -18,16 +18,16 @@ namespace Sp16p3g8MobileApp
 
 			MovieList.Add (new Movie {
 				ID =1,
-				Title = "Task1",
-				ReleaseDate = "Location1",
+				Title = "Movie1",
+				ReleaseDate = "10/11/1995",
 				Description= "fkajskfjskljdfjskld",
 				Rating =6
 			});
 
 			MovieList.Add (new Movie {
 				ID =2,
-				Title = "Task2",
-				ReleaseDate = "Location2",
+				Title = "Movie2",
+				ReleaseDate = "10/11/1995",
 				Description= "fkajskfjskljdfjskld",
 				Rating =8
 			});
@@ -35,8 +35,8 @@ namespace Sp16p3g8MobileApp
 
 			MovieList.Add (new Movie {
 				ID =3,
-				Title = "Task3",
-				ReleaseDate = "Location3",
+				Title = "Movie3",
+				ReleaseDate = "10/11/1995",
 				Description= "fkajskfjskljdfjskld",
 				Rating = 10
 			});
