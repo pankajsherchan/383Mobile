@@ -25,12 +25,12 @@ namespace Sp16p3g8MobileApp
 				};
 
 				var RatingLabel = new Label {
-				Text = "Points:" +movie.Rating,
+				Text = "Rating:" +movie.Rating,
 					Font = Font.SystemFontOfSize (NamedSize.Medium)
 				};
 
 				var ReleaseDateLabel = new Label {
-				Text = "Location: "+ movie.ReleaseDate,
+				Text = "ReleaseDate: "+ movie.ReleaseDate,
 					Font = Font.SystemFontOfSize (NamedSize.Medium)
 				};
 				
@@ -51,7 +51,7 @@ namespace Sp16p3g8MobileApp
 					Children = { NameLabel, descriptionLabel, RatingLabel, ReleaseDateLabel,DeleteButton, EditButton }
 					}
 				};
-//
+
 				EditButton.Clicked +=(o,e) => 
 				{
 					Navigation.PushAsync( new MovieEditPage(movie));
