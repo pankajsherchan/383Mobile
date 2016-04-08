@@ -11,10 +11,12 @@ namespace Sp16p3g8MobileApp
 			var NameLabel = new Label
 			{
 				Font = Font.SystemFontOfSize (NamedSize.Medium)
-						.WithAttributes (FontAttributes.Bold)
+						.WithAttributes (FontAttributes.Bold),
+               
+                TextColor = Color.Aqua
 
-				};
-			NameLabel.SetBinding(Label.TextProperty, new Binding("Title"));
+        };
+			NameLabel.SetBinding(Label.TextProperty, new Binding("Name"));
 
 
 

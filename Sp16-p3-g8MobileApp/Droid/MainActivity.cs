@@ -16,8 +16,7 @@ namespace Sp16p3g8MobileApp.Droid
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
-			global::Xamarin.Forms.Forms.Init (this, bundle);
+            global::Xamarin.Forms.Forms.Init (this, bundle);
 
 			LoadApplication (new App ());
 		}

@@ -16,7 +16,7 @@ namespace Sp16p3g8MobileApp.iOS
 
 			global::ZXing.Net.Mobile.Forms.iOS.Platform.Init ();
 
-			LoadApplication (new App ());
+		//	LoadApplication (new App ());
 
 			return base.FinishedLaunching (app, options);
 		}

@@ -15,7 +15,7 @@ namespace Sp16p3g8MobileApp
 
 
 				var NameLabel = new Label {
-				Text = "Name:" +movie.Title,
+				Text = "Name:" +movie.Name,
 					Font = Font.SystemFontOfSize (NamedSize.Small)
 				};
 
@@ -34,28 +34,16 @@ namespace Sp16p3g8MobileApp
 					Font = Font.SystemFontOfSize (NamedSize.Medium)
 				};
 				
-
-				var DeleteButton = new Button {
-					Text = "Delete",
-					BackgroundColor = Color.Red };
-
-
-				var EditButton = new Button {
-					Text = "Edit",
-					BackgroundColor = Color.Red };
-
+            
 
 				Content = new ScrollView {
 					Content = new StackLayout {
 						Spacing = 10,
-					Children = { NameLabel, descriptionLabel, RatingLabel, ReleaseDateLabel,DeleteButton, EditButton }
+					Children = { NameLabel, descriptionLabel, RatingLabel, ReleaseDateLabel}
 					}
 				};
 
-				EditButton.Clicked +=(o,e) => 
-				{
-					Navigation.PushAsync( new MovieEditPage(movie));
-				};
+				
 			}
 		}
 
