@@ -14,7 +14,7 @@ namespace Sp16p3g8MobileApp
 						.WithAttributes (FontAttributes.Bold)
 
 				};
-			NameLabel.SetBinding(Label.TextProperty, new Binding("Title"));
+			NameLabel.SetBinding(Label.TextProperty, new Binding("Name"));
 
 
 

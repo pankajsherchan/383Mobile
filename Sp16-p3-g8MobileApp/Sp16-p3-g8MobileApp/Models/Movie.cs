@@ -6,7 +6,7 @@ namespace Sp16p3g8MobileApp
 	public class Movie
 	{
 		public int ID{ get; set; }
-		public string Title{ get; set; }
+		public string Name{ get; set; }
 		public string ReleaseDate{ get; set; }
 		public string Description { get; set; }
 		public double Rating { get; set; }
@@ -18,7 +18,7 @@ namespace Sp16p3g8MobileApp
 
 			MovieList.Add (new Movie {
 				ID =1,
-				Title = "Movie1",
+				Name = "Movie1",
 				ReleaseDate = "10/11/1995",
 				Description= "fkajskfjskljdfjskld",
 				Rating =6
@@ -26,7 +26,7 @@ namespace Sp16p3g8MobileApp
 
 			MovieList.Add (new Movie {
 				ID =2,
-				Title = "Movie2",
+				Name = "Movie2",
 				ReleaseDate = "10/11/1995",
 				Description= "fkajskfjskljdfjskld",
 				Rating =8
@@ -35,7 +35,7 @@ namespace Sp16p3g8MobileApp
 
 			MovieList.Add (new Movie {
 				ID =3,
-				Title = "Movie3",
+				Name = "Movie3",
 				ReleaseDate = "10/11/1995",
 				Description= "fkajskfjskljdfjskld",
 				Rating = 10

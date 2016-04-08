@@ -12,31 +12,42 @@ namespace Sp16p3g8MobileApp
 
 
 		ObservableCollection<Movie> movies = new ObservableCollection<Movie> ();
-		public MovieListPage ()
+        private Boolean initialized = false;
+
+        protected override async void OnAppearing()
+        {
+            if (!initialized)
+            {
+                base.OnAppearing();
+
+                var movieService = new MovieService();
+                var response = await movieService.GetMovieAsync();
+
+                foreach (var movie in response)
+                {
+                    movies.Add(new Movie()
+                    {
+                        ID = movie.ID,
+                        Name = movie.Name,
+                        ReleaseDate = movie.ReleaseDate,
+                        Rating = movie.Rating,
+                        Description = movie.Description
+
+                    });
+                }
+            }
+            initialized = true;
+        }
+        public MovieListPage ()
 		{
-
-			var response = Movie.GetMovieList();
-			List<Movie> results = new List<Movie>();
-			results = response.OrderBy(p=>p.Title).ToList();	
-
-			foreach (var movie in results) {
-				movies.Add(new Movie(){
-					ID = movie.ID,	
-					Title = movie.Title, 
-					ReleaseDate = movie.ReleaseDate, 
-					Rating = movie.Rating, 
-					Description = movie.Description
-				}) ;		
-
-			Padding = new Thickness (0, Device.OnPlatform (20, 0, 0), 0, 0);
 
 			/**
 			Implementing the search functionality
 			**/
 
 			Title = "Movies";
-			Padding = new Thickness(20, Device.OnPlatform(20, 20, 20),20,20);
-			SearchBar movieSearchBar = new SearchBar{
+            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+            SearchBar movieSearchBar = new SearchBar{
 				Placeholder = "Search Movies",
 			
 			};
@@ -49,13 +60,13 @@ namespace Sp16p3g8MobileApp
 				if(string.IsNullOrWhiteSpace(movieSearchBar.Text))
 					listView.ItemsSource = movies;
 				else
-					listView.ItemsSource = movies.Where(p=>p.Title.ToLower().Contains(movieSearchBar.Text.ToLower()));
+					listView.ItemsSource = movies.Where(p=>p.Name.ToLower().Contains(movieSearchBar.Text.ToLower()));
 
 			};
 
 			movieSearchBar.SearchButtonPressed += (sender, e) => {
 				if(!string.IsNullOrEmpty(movieSearchBar.Text)){
-					listView.ItemsSource = movies.Where(p=>p.Title.ToLower().Contains(movieSearchBar.Text.ToLower()));
+					listView.ItemsSource = movies.Where(p=>p.Name.ToLower().Contains(movieSearchBar.Text.ToLower()));
 				}
 			};
 
@@ -81,9 +92,8 @@ namespace Sp16p3g8MobileApp
 		}
 
 		}			
-	}
-
 }
+
 
 
 
