@@ -5,7 +5,7 @@ namespace sp16_p3_g8WebAPI.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-
+    using System.Web.Helpers;
     internal sealed class Configuration : DbMigrationsConfiguration<sp16_p3_g8WebAPI.Models.sp16_p3_g8WebAPIContext>
     {
         public Configuration()
@@ -28,6 +28,12 @@ namespace sp16_p3_g8WebAPI.Migrations
             //    );
             //
 
+            context.Users.AddOrUpdate(
+                u => u.Id,
+                new User {FirstName="Admin",LastName="Admin",Email="383@gmail.com", Role="Admin",Password= Crypto.HashPassword("password") }
+
+                );
+
             context.Movies.AddOrUpdate(
                 m => m.Id,
                 new Movie { Name = "Movie1", Description = "this is a nice movie", Duration = "120 minutes", Rating = 9, ReleaseDate= DateTime.Today, Cast = "faklsjlfa" },
@@ -43,7 +49,7 @@ namespace sp16_p3_g8WebAPI.Migrations
 
             context.Showtimes.AddOrUpdate(
               m => m.Id,
-              new Showtime { MovieId = 11, ScreenId = 5, StartDateTime = DateTime.Today}
+              new Showtime { MovieId = 3, ScreenId = 3, StartDateTime = DateTime.Today}
               );
 
         }

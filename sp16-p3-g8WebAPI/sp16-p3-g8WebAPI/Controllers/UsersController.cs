@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using sp16_p3_g8WebAPI.Models;
+using System.Web.Helpers;
+using System.Web.Security;
 
 namespace sp16_p3_g8WebAPI.Controllers
 {
@@ -34,6 +36,55 @@ namespace sp16_p3_g8WebAPI.Controllers
             }
             return View(user);
         }
+
+        public ActionResult SignIn()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SignIn(User user)
+        {
+
+
+            var userInDatabase = db.Users.FirstOrDefault(u => u.Email == user.Email);
+
+
+            if (ModelState.IsValid && userInDatabase != null)
+            {
+                bool verifyPassword = Crypto.VerifyHashedPassword(userInDatabase.Password, user.Password);
+                if (verifyPassword == true)
+                {
+
+                    // creating authetication ticket
+                    FormsAuthentication.SetAuthCookie(user.Email, false);
+                //    Session["userRole"] = user.Role;
+
+                    return RedirectToAction("Index", "Users");
+                }
+                else
+                {
+                    @ViewBag.Message = "Error.Ivalid login.";
+
+                }
+
+            }
+
+            ModelState.AddModelError("UserDoesNotExist", "Username or Password is Incorrect! Please try Again!!");
+            return View(user);
+        }
+
+        public ActionResult Logout()
+        {
+            // This is the predefined SignOut method in FormAuthentication tongue emoticon
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Index", "Home");
+
+        }
+
+       
 
         // GET: Users/Create
         public ActionResult Create()
