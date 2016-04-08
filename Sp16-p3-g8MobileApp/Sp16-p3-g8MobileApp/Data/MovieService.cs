@@ -24,16 +24,15 @@ namespace Sp16p3g8MobileApp
 		public async Task<List<Movie>> GetMovieAsync ()
 		{
 
-            HttpClient client = new HttpClient();
-            Items = new List<Movie> ();
+			Items = new List<Movie> ();
 
 			var uri = new Uri (string.Format (Constant.RestUrl, string.Empty));
-
 
 			try {
 					var response = await client.GetAsync (uri);
 						if (response.IsSuccessStatusCode) {
 							var content = await response.Content.ReadAsStringAsync ();
+					//var rootObject = new RestSharp.Deserializers.JsonDeserializer().Deserialize<List<Game>>(response);
 							Items = JsonConvert.DeserializeObject <List<Movie>> (content);
 						}
 					} catch (Exception ex) {

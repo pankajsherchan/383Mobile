@@ -11,7 +11,7 @@ namespace Sp16p3g8MobileApp
 			Title = "Edit Movie";
 
 			var NameEntry = new Entry {Placeholder = "Name", HorizontalOptions= LayoutOptions.FillAndExpand, 
-				Text =movie.Name};
+				Text =movie.Title};
 			var ReleaseDateEntry = new Entry {Placeholder = "Location", HorizontalOptions= LayoutOptions.FillAndExpand, Text=movie.ReleaseDate};
 			var RatingEntry = new Entry {Placeholder = "Points", HorizontalOptions= LayoutOptions.FillAndExpand ,
 				Text=movie.Rating.ToString()};
