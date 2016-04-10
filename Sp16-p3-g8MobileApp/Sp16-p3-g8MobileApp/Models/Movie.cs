@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Sp16p3g8MobileApp.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Sp16p3g8MobileApp
@@ -10,41 +12,13 @@ namespace Sp16p3g8MobileApp
 		public string ReleaseDate{ get; set; }
 		public string Description { get; set; }
 		public double Rating { get; set; }
+        public string Cast { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Showtime> Showtime { get; set; } = new List<Showtime>();
+       // public List<Showtime> Showtime { get; set; }
+      //  public  List<Showtime> Showtime { get; set; }
 
 
-		public static List<Movie> GetMovieList()
-		{
-			var MovieList = new List<Movie> ();
-
-			MovieList.Add (new Movie {
-				ID =1,
-				Name = "Movie1",
-				ReleaseDate = "10/11/1995",
-				Description= "fkajskfjskljdfjskld",
-				Rating =6
-			});
-
-			MovieList.Add (new Movie {
-				ID =2,
-				Name = "Movie2",
-				ReleaseDate = "10/11/1995",
-				Description= "fkajskfjskljdfjskld",
-				Rating =8
-			});
-
-
-			MovieList.Add (new Movie {
-				ID =3,
-				Name = "Movie3",
-				ReleaseDate = "10/11/1995",
-				Description= "fkajskfjskljdfjskld",
-				Rating = 10
-			});
-
-
-			return MovieList;
-
-		}
 	}
 		
 }

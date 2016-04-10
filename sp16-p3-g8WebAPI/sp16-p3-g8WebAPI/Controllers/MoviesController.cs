@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using sp16_p3_g8WebAPI.Models;
+using System.Threading.Tasks;
 
 namespace sp16_p3_g8WebAPI.Controllers
 {
@@ -17,10 +18,30 @@ namespace sp16_p3_g8WebAPI.Controllers
         private sp16_p3_g8WebAPIContext db = new sp16_p3_g8WebAPIContext();
 
         // GET: api/Movies
-        public IQueryable<Movie> GetMovies()
+        public async Task<ICollection<Movie>> GetMovies()
         {
-            return db.Movies;
+            var movies = await db.Movies.ToListAsync();
+            var movieList = new List<Movie>();
+            foreach (var movie in movies)
+            {
+                movieList.Add(new Movie()
+                {
+                    Id= movie.Id,
+                    Name = movie.Name,
+                    Rating =movie.Rating,
+                    ReleaseDate =movie.ReleaseDate,
+                    Cast =movie.Cast,
+                    Description = movie.Description,
+                    Duration = movie.Duration,
+                    Showtime = movie.Showtime
+                });
+            }
+            return movieList;
         }
+        //public IQueryable<Movie> GetMovies()
+        //{
+        //    return db.Movies;
+        //}
 
         // GET: api/Movies/5
         [ResponseType(typeof(Movie))]

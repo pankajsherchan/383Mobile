@@ -49,7 +49,7 @@ namespace sp16_p3_g8WebAPI.Migrations
 
             context.Showtimes.AddOrUpdate(
               m => m.Id,
-              new Showtime { MovieId = 3, ScreenId = 3, StartDateTime = DateTime.Today}
+              new Showtime { MovieId = 3, ScreenId = 3, StartDateTime = DateTime.Today }
               );
 
         }

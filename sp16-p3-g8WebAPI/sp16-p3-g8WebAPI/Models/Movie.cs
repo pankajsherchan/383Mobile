@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -27,6 +28,9 @@ namespace sp16_p3_g8WebAPI.Models
 
         [DataType(DataType.Date)]
      //   [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime ReleaseDate { get; set; } 
+        public DateTime ReleaseDate { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Showtime> Showtime { get; set; } = new List<Showtime>();
     }
 }
