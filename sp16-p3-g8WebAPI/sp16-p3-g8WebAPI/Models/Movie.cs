@@ -26,9 +26,9 @@ namespace sp16_p3_g8WebAPI.Models
         
         public string Cast { get; set; }
 
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
      //   [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Showtime> Showtime { get; set; } = new List<Showtime>();

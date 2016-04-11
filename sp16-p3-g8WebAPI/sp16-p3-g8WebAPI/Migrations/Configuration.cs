@@ -1,16 +1,29 @@
 namespace sp16_p3_g8WebAPI.Migrations
 {
+    using APIHelper;
     using Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using System.Web.Helpers;
     internal sealed class Configuration : DbMigrationsConfiguration<sp16_p3_g8WebAPI.Models.sp16_p3_g8WebAPIContext>
     {
+
+        public static List<Movie> GetMovie()
+        {
+            MovieAPI helper = new MovieAPI();
+            List<Movie> movieList = new List<Movie>();
+            movieList = helper.GetMovie();
+            return movieList;
+        }
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+
+
+
         }
 
         protected override void Seed(sp16_p3_g8WebAPI.Models.sp16_p3_g8WebAPIContext context)
@@ -30,15 +43,20 @@ namespace sp16_p3_g8WebAPI.Migrations
 
             context.Users.AddOrUpdate(
                 u => u.Id,
-                new User {FirstName="Admin",LastName="Admin",Email="383@gmail.com", Role="Admin",Password= Crypto.HashPassword("password") }
+                new User { FirstName = "Admin", LastName = "Admin", Email = "383@gmail.com", Role = "Admin", Password = Crypto.HashPassword("password") }
 
                 );
+            //   var movie = GetMovie();
+            GetMovie().ForEach(s => context.Movies.AddOrUpdate(p => p.Id, s));
+            context.SaveChanges();
 
-            context.Movies.AddOrUpdate(
-                m => m.Id,
-                new Movie { Name = "Movie1", Description = "this is a nice movie", Duration = "120 minutes", Rating = 9, ReleaseDate= DateTime.Today, Cast = "faklsjlfa" },
-                 new Movie { Name = "Movie2", Description = "this is a nice movie second", Duration = "180 minutes", Rating = 8, ReleaseDate = DateTime.Today, Cast = "fkasjkl" }
-                );
+            //  context.Movies.AddOrUpdate
+
+            //context.Movies.AddOrUpdate(
+            //    m => m.Id,
+            //    new Movie { Name = "Movie1", Description = "this is a nice movie", Duration = "120 minutes", Rating = 9, ReleaseDate= DateTime.Today, Cast = "faklsjlfa" },
+            //     new Movie { Name = "Movie2", Description = "this is a nice movie second", Duration = "180 minutes", Rating = 8, ReleaseDate = DateTime.Today, Cast = "fkasjkl" }
+            //    );
 
             context.Screens.AddOrUpdate(
                m => m.Id,

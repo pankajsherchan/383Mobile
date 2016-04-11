@@ -65,6 +65,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -140,6 +144,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIHelper\MovieAPI.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -190,6 +195,10 @@
     <Compile Include="Migrations\201604010156554_changedModel.cs" />
     <Compile Include="Migrations\201604010156554_changedModel.Designer.cs">
       <DependentUpon>201604010156554_changedModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604112331331_apimovieseeded.cs" />
+    <Compile Include="Migrations\201604112331331_apimovieseeded.Designer.cs">
+      <DependentUpon>201604112331331_apimovieseeded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -264,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604010156554_changedModel.resx">
       <DependentUpon>201604010156554_changedModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604112331331_apimovieseeded.resx">
+      <DependentUpon>201604112331331_apimovieseeded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
