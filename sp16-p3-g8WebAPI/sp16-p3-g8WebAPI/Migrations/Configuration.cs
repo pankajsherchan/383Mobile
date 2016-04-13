@@ -60,15 +60,17 @@ namespace sp16_p3_g8WebAPI.Migrations
 
             context.Screens.AddOrUpdate(
                m => m.Id,
-               new Screen { ScreenNumber = 1, SeatCount = 25 },
-                new Screen { ScreenNumber = 2, SeatCount = 25 }
+               new Screen { ScreenNumber = "100A", SeatCount = 25 },
+                new Screen { ScreenNumber = "200A", SeatCount = 25 },
+                new Screen { ScreenNumber ="300A", SeatCount =25},
+                new Screen { ScreenNumber ="400A", SeatCount =25}
                );
 
 
-            context.Showtimes.AddOrUpdate(
-              m => m.Id,
-              new Showtime { MovieId = 3, ScreenId = 3, StartDateTime = DateTime.Today }
-              );
+            //context.Showtimes.AddOrUpdate(
+            //  m => m.Id,
+            //  new Showtime { MovieId = 3, ScreenId = 3, StartDateTime = DateTime.Today }
+            //  );
 
         }
     }

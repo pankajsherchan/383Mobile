@@ -17,17 +17,15 @@ namespace sp16_p3_g8WebAPI.Models
         */
         [Key]
         public int Id { get; set; }
-
-        // get the screen information
+        
         public int ScreenId { get; set; }
-
         public virtual Screen Screen { get; set; }
 
-        // get the movie information
         public int MovieId { get; set; }
+         public virtual MovieViewModel Movie { get; set; }
+        //public Movie Movie { get; set; }
 
-        public virtual Movie Movie { get; set; }
-
+        //  public virtual ICollection<Movie> Movies { get; set; }
         public DateTime StartDateTime { get; set; }
 
     }

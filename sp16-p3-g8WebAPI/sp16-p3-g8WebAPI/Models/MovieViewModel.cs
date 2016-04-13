@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,12 +6,8 @@ using System.Web;
 
 namespace sp16_p3_g8WebAPI.Models
 {
-    public class Movie
+    public class MovieViewModel
     {
-        /*
-        Id is the primary key for this model.
-        Name, Description and .... are just samples movie info as per OMDB API
-        */
         [Key]
         public int Id { get; set; }
 
@@ -23,16 +18,10 @@ namespace sp16_p3_g8WebAPI.Models
         public int Rating { get; set; }
 
         public string Duration { get; set; }
-        
+
         public string Cast { get; set; }
 
-        //[DataType(DataType.Date)]
-     //   [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public string ReleaseDate { get; set; }
 
-        [JsonIgnore]
-        public virtual ICollection<Showtime> Showtime { get; set; } = new List<Showtime>();
-
-      
     }
 }

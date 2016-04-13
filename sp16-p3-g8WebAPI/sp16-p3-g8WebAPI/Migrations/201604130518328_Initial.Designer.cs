@@ -7,13 +7,13 @@ namespace sp16_p3_g8WebAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class changedModel : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changedModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201604010156554_changedModel"; }
+            get { return "201604130518328_Initial"; }
         }
         
         string IMigrationMetadata.Source

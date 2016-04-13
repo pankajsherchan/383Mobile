@@ -179,6 +179,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\MVC\MoviesController.cs" />
+    <Compile Include="Controllers\MVC\ShowtimesController.cs" />
     <Compile Include="Controllers\PurchaseTicketLineItemsController.cs" />
     <Compile Include="Controllers\PurchaseTicketsController.cs" />
     <Compile Include="Controllers\ScreensController.cs" />
@@ -188,20 +190,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604010123223_Initial.cs" />
-    <Compile Include="Migrations\201604010123223_Initial.Designer.cs">
-      <DependentUpon>201604010123223_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604010156554_changedModel.cs" />
-    <Compile Include="Migrations\201604010156554_changedModel.Designer.cs">
-      <DependentUpon>201604010156554_changedModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604112331331_apimovieseeded.cs" />
-    <Compile Include="Migrations\201604112331331_apimovieseeded.Designer.cs">
-      <DependentUpon>201604112331331_apimovieseeded.cs</DependentUpon>
+    <Compile Include="Migrations\201604130518328_Initial.cs" />
+    <Compile Include="Migrations\201604130518328_Initial.Designer.cs">
+      <DependentUpon>201604130518328_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\PurchaseTicket.cs" />
     <Compile Include="Models\PurchaseTicketLineItem.cs" />
     <Compile Include="Models\Showtime.cs" />
@@ -266,17 +261,16 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Shared\Shared_partial.cshtml" />
     <Content Include="Views\Users\SignIn.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604010123223_Initial.resx">
-      <DependentUpon>201604010123223_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604010156554_changedModel.resx">
-      <DependentUpon>201604010156554_changedModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604112331331_apimovieseeded.resx">
-      <DependentUpon>201604112331331_apimovieseeded.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Views\Movies\Create.cshtml" />
+    <Content Include="Views\Movies\Delete.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Movies\Edit.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Showtimes\Create.cshtml" />
+    <Content Include="Views\Showtimes\Delete.cshtml" />
+    <Content Include="Views\Showtimes\Details.cshtml" />
+    <Content Include="Views\Showtimes\Edit.cshtml" />
+    <Content Include="Views\Showtimes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -285,6 +279,11 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604130518328_Initial.resx">
+      <DependentUpon>201604130518328_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

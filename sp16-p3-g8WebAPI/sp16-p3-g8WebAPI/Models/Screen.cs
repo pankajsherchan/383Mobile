@@ -15,7 +15,7 @@ namespace sp16_p3_g8WebAPI.Models
         [Key]
         public int Id { get; set; }
         
-        public int ScreenNumber { get; set; }
+        public string ScreenNumber { get; set; }
 
         public int SeatCount { get; set; }
     }
