@@ -67,13 +67,10 @@ namespace QRLab
 			public const int MyButton = 2131034113;
 			
 			// aapt resource value: 0x7f050000
-			public const int QRExample = 2131034112;
+			public const int QRFrame = 2131034112;
 			
 			// aapt resource value: 0x7f050002
-			public const int ResultsText = 2131034114;
-			
-			// aapt resource value: 0x7f050003
-			public const int contentFrame = 2131034115;
+			public const int contentFrame = 2131034114;
 			
 			static Id()
 			{
