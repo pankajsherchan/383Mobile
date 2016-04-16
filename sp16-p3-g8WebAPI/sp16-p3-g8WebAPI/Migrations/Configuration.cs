@@ -41,11 +41,11 @@ namespace sp16_p3_g8WebAPI.Migrations
             //    );
             //
 
-            context.Users.AddOrUpdate(
-                u => u.Id,
-                new User { FirstName = "Admin", LastName = "Admin", Email = "383@gmail.com", Role = "Admin", Password = Crypto.HashPassword("password") }
+            //context.Users.AddOrUpdate(
+            //    u => u.Id,
+            //    new User { FirstName = "Admin", LastName = "Admin", Email = "383@gmail.com", Role = "Admin", Password = Crypto.HashPassword("password") }
 
-                );
+            //    );
             //   var movie = GetMovie();
             GetMovie().ForEach(s => context.Movies.AddOrUpdate(p => p.Id, s));
             context.SaveChanges();

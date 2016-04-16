@@ -8,40 +8,19 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using sp16_p3_g8WebAPI.Models;
-using System.Threading.Tasks;
+using FinalWebAPI.Models;
 
-namespace sp16_p3_g8WebAPI.Controllers
+namespace FinalWebAPI.Controllers.API
 {
     public class MoviesController : ApiController
     {
-        private sp16_p3_g8WebAPIContext db = new sp16_p3_g8WebAPIContext();
+        private FinalWebAPIContext db = new FinalWebAPIContext();
 
         // GET: api/Movies
-        public async Task<ICollection<Movie>> GetMovies()
+        public IQueryable<Movie> GetMovies()
         {
-            var movies = await db.Movies.ToListAsync();
-            var movieList = new List<Movie>();
-            foreach (var movie in movies)
-            {
-                movieList.Add(new Movie()
-                {
-                    Id= movie.Id,
-                    Name = movie.Name,
-                    Rating =movie.Rating,
-                    ReleaseDate =movie.ReleaseDate,
-                    Cast =movie.Cast,
-                    Description = movie.Description,
-                    Duration = movie.Duration,
-                    Showtimes = movie.Showtimes
-                });
-            }
-            return movieList;
+            return db.Movies;
         }
-        //public IQueryable<Movie> GetMovies()
-        //{
-        //    return db.Movies;
-        //}
 
         // GET: api/Movies/5
         [ResponseType(typeof(Movie))]
