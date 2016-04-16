@@ -14,7 +14,7 @@ namespace Sp16p3g8MobileApp
 						.WithAttributes (FontAttributes.Bold)
 
 				};
-			NameLabel.SetBinding(Label.TextProperty, new Binding("Name"));
+			NameLabel.SetBinding(Label.TextProperty, new Binding("Movie.Name"));
 
 
 
