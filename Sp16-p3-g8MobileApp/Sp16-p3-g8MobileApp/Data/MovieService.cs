@@ -8,46 +8,47 @@ using System.Collections.ObjectModel;
 using RestSharp.Portable.HttpClient;
 using RestSharp.Portable;
 using System.Linq;
+using Sp16p3g8MobileApp.Models;
 
 namespace Sp16p3g8MobileApp
 {
 	public class MovieService : MovieServiceInterface
 	{
 		HttpClient client;
-		public List<Movie> Items { get; private set; }
+		public List<Showtime> Items { get; private set; }
 
-        ObservableCollection<Movie> movies = new ObservableCollection<Movie>();
+        ObservableCollection<Showtime> showtimes = new ObservableCollection<Showtime>();
         public MovieService ()
 		{
 			client = new HttpClient ();
 		}
 
-        public async Task<List<Movie>> GetMovieAsync()
+        public async Task<List<Showtime>> GetMovieAsync()
         {
-            var client = new RestClient("http://192.168.1.40:30044/");
-            var request = new RestRequest("api/movies", Method.GET);
+            var client = new RestClient("http://192.168.1.40:51269/");
+            var request = new RestRequest("api/showtimes", Method.GET);
 
-            var response = await client.Execute<List<Movie>>(request);
-            List<Movie> results = new List<Movie>();
-            results = response.Data.OrderBy(m => m.Name).ToList();
+            var response = await client.Execute<List<Showtime>>(request);
+            List<Showtime> results = new List<Showtime>();
+            results = response.Data.OrderBy(m => m.Id).ToList();
 
-            foreach (var movie in results)
+            foreach (var showtime in results)
             {
-                movies.Add(new Movie()
+                showtimes.Add(new Showtime()
 
                 {
-                    ID = movie.ID,
-                    Name = movie.Name,
-                    Rating = movie.Rating,
-                    ReleaseDate = movie.ReleaseDate,
-                    Description = movie.Description,
-                    Cast=movie.Cast,
-                    Showtime = movie.Showtime
+                    Id = showtime.Id,
+                    MovieId = showtime.MovieId,
+                    Movie = showtime.Movie,
+                    ScreenId = showtime.ScreenId,
+                    StartDateTime = showtime.StartDateTime,
+                   
+                    Screen = showtime.Screen
                 });
 
 
             }
-            return movies.ToList();
+            return showtimes.ToList();
         }
       
 

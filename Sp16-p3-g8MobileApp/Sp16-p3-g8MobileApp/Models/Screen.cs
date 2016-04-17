@@ -10,8 +10,8 @@ namespace Sp16p3g8MobileApp.Models
     {
         public int Id { get; set; }
 
-        public int ScreenNumber { get; set; }
-
+        public string ScreenNumber { get; set; }
+    
         public int SeatCount { get; set; }
     }
 }

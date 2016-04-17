@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using Sp16p3g8MobileApp.Models;
 
 namespace Sp16p3g8MobileApp
 {
@@ -11,7 +12,7 @@ namespace Sp16p3g8MobileApp
 	{
 
 
-		ObservableCollection<Movie> movies = new ObservableCollection<Movie> ();
+		ObservableCollection<Showtime> movies = new ObservableCollection<Showtime> ();
         private Boolean initialized = false;
 
         protected override async void OnAppearing()
@@ -25,13 +26,14 @@ namespace Sp16p3g8MobileApp
 
                 foreach (var movie in response)
                 {
-                    movies.Add(new Movie()
+                    movies.Add(new Showtime()
                     {
-                        ID = movie.ID,
-                        Name = movie.Name,
-                        ReleaseDate = movie.ReleaseDate,
-                        Rating = movie.Rating,
-                        Description = movie.Description
+                        Id = movie.Id,
+                        Screen = movie.Screen,
+                        StartDateTime = movie.StartDateTime,
+                        ScreenId = movie.ScreenId,
+                        Movie = movie.Movie,
+                        MovieId =movie.MovieId
 
                     });
                 }
@@ -60,13 +62,13 @@ namespace Sp16p3g8MobileApp
 				if(string.IsNullOrWhiteSpace(movieSearchBar.Text))
 					listView.ItemsSource = movies;
 				else
-					listView.ItemsSource = movies.Where(p=>p.Name.ToLower().Contains(movieSearchBar.Text.ToLower()));
+					listView.ItemsSource = movies.Where(p=>p.Movie.Name.Contains(movieSearchBar.Text.ToLower()));
 
 			};
 
 			movieSearchBar.SearchButtonPressed += (sender, e) => {
 				if(!string.IsNullOrEmpty(movieSearchBar.Text)){
-					listView.ItemsSource = movies.Where(p=>p.Name.ToLower().Contains(movieSearchBar.Text.ToLower()));
+					listView.ItemsSource = movies.Where(p=>p.Movie.Name.ToLower().Contains(movieSearchBar.Text.ToLower()));
 				}
 			};
 
@@ -83,9 +85,9 @@ namespace Sp16p3g8MobileApp
 			{
 				if (e.SelectedItem != null)
 				{
-					Movie item = (Movie)e.SelectedItem;
+					Showtime item = (Showtime)e.SelectedItem;
 					listView.SelectedItem = null;
-					await Navigation.PushAsync(new MovieDetailPage(item));
+					await Navigation.PushAsync(new ShowTimeDetailPage(item));
 				}
 
 			};
