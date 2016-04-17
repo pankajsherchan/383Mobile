@@ -44,13 +44,13 @@ namespace FinalWebAPI.Migrations
                );
 
             context.Screens.AddOrUpdate(
-               m => m.Id,
+               s => s.Id,
                new Screen { ScreenNumber = "100A", SeatCount = 25 },
                 new Screen { ScreenNumber = "200A", SeatCount = 25 },
                 new Screen { ScreenNumber = "300A", SeatCount = 25 },
                 new Screen { ScreenNumber = "400A", SeatCount = 25 }
                );
-           
+
 
             GetMovie().ForEach(s => context.Movies.AddOrUpdate(p => p.Id, s));
             context.SaveChanges();

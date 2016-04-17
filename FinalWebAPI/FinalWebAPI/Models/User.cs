@@ -25,4 +25,14 @@ namespace FinalWebAPI.Models
 
         public string Role { get; set; }
     }
+
+    public class UserViewModel {
+
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+    }
 }

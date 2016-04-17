@@ -99,7 +99,7 @@ namespace FinalWebAPI.Controllers.MVC
         }
 
         [HttpPost]
-        public ActionResult SignIn(User user)
+        public ActionResult SignIn(UserViewModel user)
         {
 
 
