@@ -172,6 +172,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIHelper\CheckRole.cs" />
     <Compile Include="APIHelper\MovieAPI.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -224,6 +225,10 @@
     <Compile Include="Migrations\201604161949369_modelchanged.Designer.cs">
       <DependentUpon>201604161949369_modelchanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604170039088_modeladded.cs" />
+    <Compile Include="Migrations\201604170039088_modeladded.Designer.cs">
+      <DependentUpon>201604170039088_modeladded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\FinalWebAPIContext.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -233,6 +238,8 @@
     <Compile Include="Models\Showtime.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\CheckIfExists.cs" />
+    <Compile Include="Validation\CheckIfExistsMovie.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -312,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604161949369_modelchanged.resx">
       <DependentUpon>201604161949369_modelchanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604170039088_modeladded.resx">
+      <DependentUpon>201604170039088_modeladded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

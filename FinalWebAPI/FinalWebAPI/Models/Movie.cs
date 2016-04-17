@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using FinalWebAPI.Validation;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,6 +17,7 @@ namespace FinalWebAPI.Models
         [Key]
         public int Id { get; set; }
 
+        [CheckIfExistsMovie]
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -24,7 +26,7 @@ namespace FinalWebAPI.Models
 
         public string Duration { get; set; }
 
-
+        public string Poster { get; set; }
         //[DataType(DataType.Date)]
         //   [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public string ReleaseDate { get; set; }
