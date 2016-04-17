@@ -7,14 +7,16 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FinalWebAPI.Models;
+using FinalWebAPI.APIHelper;
 
 namespace FinalWebAPI.Controllers.MVC
 {
-    [Authorize]
+    
     public class ShowtimesController : Controller
     {
         private FinalWebAPIContext db = new FinalWebAPIContext();
 
+        CheckRole check = new CheckRole();
         // GET: Showtimes
         public ActionResult Index()
         {
@@ -37,12 +39,30 @@ namespace FinalWebAPI.Controllers.MVC
             return View(showtime);
         }
 
+        [Authorize]
         // GET: Showtimes/Create
         public ActionResult Create()
         {
-            ViewBag.MovieId = new SelectList(db.Movies, "Id", "Name");
-            ViewBag.ScreenId = new SelectList(db.Screens, "Id", "ScreenNumber");
-            return View();
+            if (check.GetUser().Role == "Admin")
+            {
+                ViewBag.MovieId = new SelectList(db.Movies, "Id", "Name");
+                ViewBag.ScreenId = new SelectList(db.Screens, "Id", "ScreenNumber");
+                return View();
+
+
+            }
+            else {
+                ModelState.AddModelError("badlogin", "Username or Password is Incorrect! Please try Again!!");
+                ViewBag.Message = "YOU ARE NOT AUTHORIZED";
+
+            }
+            return View(check.GetUser());
+
+
+
+
+
+
         }
 
         // POST: Showtimes/Create
@@ -50,7 +70,7 @@ namespace FinalWebAPI.Controllers.MVC
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ScreenId,MovieId,StartDateTime")] Showtime showtime)
+        public ActionResult Create([Bind(Include = "Id,ScreenId,MovieId,StartDate,StartTime")] Showtime showtime)
         {
             if (ModelState.IsValid)
             {
@@ -132,6 +152,12 @@ namespace FinalWebAPI.Controllers.MVC
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public bool GetRole(User user) {
+
+
+            return true;
         }
     }
 }

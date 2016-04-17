@@ -18,7 +18,11 @@
             @Html.DisplayNameFor(model => model.Screen.ScreenNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartDateTime)
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
         </th>
         <th></th>
     </tr>
@@ -32,7 +36,10 @@
             @Html.DisplayFor(modelItem => item.Screen.ScreenNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StartDateTime)
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

@@ -23,8 +23,16 @@ namespace FinalWebAPI.Models
 
         public int MovieId { get; set; }
         public virtual Movie Movie { get; set; }
-       
-        public DateTime StartDateTime { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime StartDate { get; set; }
+
+
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public string StartTime { get; set; }
+
 
     }
 }

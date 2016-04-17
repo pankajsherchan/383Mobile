@@ -52,6 +52,7 @@ namespace FinalWebAPI.Controllers.MVC
         {
             if (ModelState.IsValid)
             {
+                user.Password = Crypto.HashPassword(user.Password);
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
