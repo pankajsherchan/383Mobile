@@ -260,6 +260,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\controller.js" />
+    <Content Include="app\movieClass.js" />
     <Content Include="app\views\default.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\movie.html" />
