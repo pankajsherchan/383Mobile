@@ -258,6 +258,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\controller.js" />
+    <Content Include="app\views\home.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\bootstrap.css" />
@@ -289,9 +292,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -349,6 +349,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\services\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
