@@ -15,7 +15,7 @@ namespace FinalWebAPI.APIHelper
 
                 var client = new RestClient("http://api.themoviedb.org");
                 var request = new RestRequest("/3/discover/movie?api_key=bd4ad9f94b172bb08b24a8c6dbf15766&primary_release_date.gte=2016-03-15&primary_release_date.lte=2016-04-22");
-                var response = client.Execute<List<RootObject>>(request);
+               var response = client.Execute<List<RootObject>>(request);
 
                 var movieList = new List<Movie>();
 
@@ -30,7 +30,9 @@ namespace FinalWebAPI.APIHelper
                     Description = movie.overview,
                     Rating = rnd.Next(5, 10),
                     ReleaseDate = movie.release_date,
-                    Duration = rnd.Next(120,180).ToString()
+                    Duration = rnd.Next(120,180).ToString(),
+                    Poster = movie.poster_path
+
                     });
                 }
 
