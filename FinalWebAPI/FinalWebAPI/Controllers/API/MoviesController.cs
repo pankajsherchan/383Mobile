@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Threading.Tasks;
 using System.Web.Http.Description;
 using FinalWebAPI.Models;
 
@@ -24,9 +25,9 @@ namespace FinalWebAPI.Controllers.API
 
         // GET: api/Movies/5
         [ResponseType(typeof(Movie))]
-        public IHttpActionResult GetMovie(int id)
+        public async Task<IHttpActionResult> GetMovie(int id)
         {
-            Movie movie = db.Movies.Find(id);
+            Movie movie = await db.Movies.FindAsync(id);
             if (movie == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace FinalWebAPI.Controllers.API
 
         // PUT: api/Movies/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutMovie(int id, Movie movie)
+        public async Task<IHttpActionResult> PutMovie(int id, Movie movie)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace FinalWebAPI.Controllers.API
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace FinalWebAPI.Controllers.API
 
         // POST: api/Movies
         [ResponseType(typeof(Movie))]
-        public IHttpActionResult PostMovie(Movie movie)
+        public async Task<IHttpActionResult> PostMovie(Movie movie)
         {
             if (!ModelState.IsValid)
             {
@@ -80,23 +81,23 @@ namespace FinalWebAPI.Controllers.API
             }
 
             db.Movies.Add(movie);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = movie.Id }, movie);
         }
 
         // DELETE: api/Movies/5
         [ResponseType(typeof(Movie))]
-        public IHttpActionResult DeleteMovie(int id)
+        public async Task<IHttpActionResult> DeleteMovie(int id)
         {
-            Movie movie = db.Movies.Find(id);
+            Movie movie = await db.Movies.FindAsync(id);
             if (movie == null)
             {
                 return NotFound();
             }
 
             db.Movies.Remove(movie);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(movie);
         }

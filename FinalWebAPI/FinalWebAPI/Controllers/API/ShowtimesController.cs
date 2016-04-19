@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Threading.Tasks;
 using FinalWebAPI.Models;
 
 namespace FinalWebAPI.Controllers.API
@@ -24,9 +25,9 @@ namespace FinalWebAPI.Controllers.API
 
         // GET: api/Showtimes/5
         [ResponseType(typeof(Showtime))]
-        public IHttpActionResult GetShowtime(int id)
+        public async Task<IHttpActionResult> GetShowtime(int id)
         {
-            Showtime showtime = db.Showtimes.Find(id);
+            Showtime showtime = await db.Showtimes.FindAsync(id);
             if (showtime == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace FinalWebAPI.Controllers.API
 
         // PUT: api/Showtimes/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutShowtime(int id, Showtime showtime)
+        public async Task<IHttpActionResult> PutShowtime(int id, Showtime showtime)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace FinalWebAPI.Controllers.API
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace FinalWebAPI.Controllers.API
 
         // POST: api/Showtimes
         [ResponseType(typeof(Showtime))]
-        public IHttpActionResult PostShowtime(Showtime showtime)
+        public async Task<IHttpActionResult> PostShowtime(Showtime showtime)
         {
             if (!ModelState.IsValid)
             {
@@ -80,23 +81,23 @@ namespace FinalWebAPI.Controllers.API
             }
 
             db.Showtimes.Add(showtime);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = showtime.Id }, showtime);
         }
 
         // DELETE: api/Showtimes/5
         [ResponseType(typeof(Showtime))]
-        public IHttpActionResult DeleteShowtime(int id)
+        public async Task<IHttpActionResult> DeleteShowtime(int id)
         {
-            Showtime showtime = db.Showtimes.Find(id);
+            Showtime showtime = await db.Showtimes.FindAsync(id);
             if (showtime == null)
             {
                 return NotFound();
             }
 
             db.Showtimes.Remove(showtime);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(showtime);
         }

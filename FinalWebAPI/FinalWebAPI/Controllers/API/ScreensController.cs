@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Threading.Tasks;
 using System.Web.Http.Description;
 using FinalWebAPI.Models;
 
@@ -24,9 +25,9 @@ namespace FinalWebAPI.Controllers.API
 
         // GET: api/Screens/5
         [ResponseType(typeof(Screen))]
-        public IHttpActionResult GetScreen(int id)
+        public async Task<IHttpActionResult> GetScreen(int id)
         {
-            Screen screen = db.Screens.Find(id);
+            Screen screen = await db.Screens.FindAsync(id);
             if (screen == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace FinalWebAPI.Controllers.API
 
         // PUT: api/Screens/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutScreen(int id, Screen screen)
+        public async Task<IHttpActionResult> PutScreen(int id, Screen screen)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace FinalWebAPI.Controllers.API
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace FinalWebAPI.Controllers.API
 
         // POST: api/Screens
         [ResponseType(typeof(Screen))]
-        public IHttpActionResult PostScreen(Screen screen)
+        public async Task<IHttpActionResult> PostScreen(Screen screen)
         {
             if (!ModelState.IsValid)
             {
@@ -80,23 +81,23 @@ namespace FinalWebAPI.Controllers.API
             }
 
             db.Screens.Add(screen);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = screen.Id }, screen);
         }
 
         // DELETE: api/Screens/5
         [ResponseType(typeof(Screen))]
-        public IHttpActionResult DeleteScreen(int id)
+        public async Task<IHttpActionResult> DeleteScreen(int id)
         {
-            Screen screen = db.Screens.Find(id);
+            Screen screen = await db.Screens.FindAsync(id);
             if (screen == null)
             {
                 return NotFound();
             }
 
             db.Screens.Remove(screen);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(screen);
         }
