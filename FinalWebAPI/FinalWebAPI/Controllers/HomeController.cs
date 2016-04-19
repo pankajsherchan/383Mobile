@@ -11,6 +11,9 @@ namespace FinalWebAPI.Controllers
     {
         public ActionResult Index()
         {
+
+            //MovieAPI1 a = new MovieAPI1();
+            //a.Get();
             ViewBag.Title = "Home Page";
 
             return View();

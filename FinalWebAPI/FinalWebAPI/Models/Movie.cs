@@ -16,20 +16,21 @@ namespace FinalWebAPI.Models
       */
         [Key]
         public int Id { get; set; }
-
         [CheckIfExistsMovie]
         public string Name { get; set; }
-
         public string Description { get; set; }
-
-        public int Rating { get; set; }
-
         public string Duration { get; set; }
-
         public string Poster { get; set; }
-        //[DataType(DataType.Date)]
-        //   [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public string ReleaseDate { get; set; }
+        public string Year { get; set; }
+        public string Genre { get; set; }
+        public string Director { get; set; }        
+        public string Actors { get; set; }
+        public string Plot { get; set; }
+        public string Language { get; set; }
+        public string Awards { get; set; }
+        public string imdbRating { get; set; }
+      
 
         [JsonIgnore]
         public virtual ICollection<Showtime> Showtimes { get; set; }
