@@ -41,13 +41,15 @@ namespace Sp16p3g8MobileApp
             var image = new Image {};
             image.SetBinding(Image.SourceProperty, "Movie.Poster");
 
+
+            var showLabel = new Label { Text = "Showtime" };
             var showDate = new Label { };
           
-            showDate.SetBinding(Label.TextProperty, new Binding("StartDate ", stringFormat: "Date: {0}"));
+            showDate.SetBinding(Label.TextProperty, new Binding("StartDate ", stringFormat: "{0:MMMM dd, yyyy}"));
 
-            var showTime = new Label { };
+            var TimeLabel = new Label { };
 
-            showTime.SetBinding(Label.TextProperty, new Binding("StartTime ", stringFormat: "Time: {0}"));
+            TimeLabel.SetBinding(Label.TextProperty, new Binding("StartTime ", stringFormat: "{0: h:mm tt}"));
 
 
             var screenLabel = new Label { };
@@ -57,10 +59,10 @@ namespace Sp16p3g8MobileApp
             descriptionLabel.SetBinding(Label.TextProperty, new Binding("Movie.Plot", stringFormat: "Overview :{0}"));
 
             var ActorsLabel = new Label { };
-            ActorsLabel.SetBinding(Label.TextProperty, new Binding("Movie.Actors", stringFormat: "Cast :{0}"));
+            ActorsLabel.SetBinding(Label.TextProperty, new Binding("Movie.Actors", stringFormat: "Cast  :{0}"));
 
             var GenreLabel = new Label { };
-            ActorsLabel.SetBinding(Label.TextProperty, new Binding("Movie.Genre", stringFormat: "Genre :{0}"));
+            GenreLabel.SetBinding(Label.TextProperty, new Binding("Movie.Genre", stringFormat: "Genre  :{0}"));
 
             var AwardsLabel = new Label { };
             AwardsLabel.SetBinding(Label.TextProperty, new Binding("Movie.Awards", stringFormat: "Awards :{0}"));
@@ -70,22 +72,28 @@ namespace Sp16p3g8MobileApp
 
             var grid = new Grid();
             grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto});
-            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Star) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
-           
-            grid.Children.Add(NameLabel, 0, 0);
-            grid.Children.Add(descriptionLabel, 0, 1);
-            grid.Children.Add(showDate, 1, 0);
-            grid.Children.Add(showTime, 1, 1);
+            grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(100, GridUnitType.Absolute) });
+            //grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+
+            grid.Children.Add(image, 0, 0);
+            grid.Children.Add(descriptionLabel, 1, 0);
+            grid.Children.Add(NameLabel, 0, 1);
+          
 
 
 
+            var showtimestacklayout = new StackLayout {
+
+                Orientation = StackOrientation.Horizontal,
+                Children = { showLabel, showDate, TimeLabel }
+            };
             Content = new ScrollView {
 					Content = new StackLayout {
 						Spacing = 10,
-                        
-					Children = {image , grid }
+					Children = { grid, showtimestacklayout,GenreLabel,  ActorsLabel, AwardsLabel   }
 					}
 				};
 
