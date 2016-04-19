@@ -13,6 +13,9 @@ namespace Sp16p3g8MobileApp
 		public string Description { get; set; }
 		public int Rating { get; set; }
 
+        public string Duration { get; set; }
+
+        public string Poster { get; set; }
         public string ReleaseDate { get; set; }
         [JsonIgnore]
         public virtual ICollection<Showtime> Showtimes { get; set; } = new List<Showtime>();

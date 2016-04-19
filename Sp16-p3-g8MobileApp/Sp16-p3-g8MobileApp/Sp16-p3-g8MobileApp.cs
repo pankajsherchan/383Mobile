@@ -10,7 +10,7 @@ namespace Sp16p3g8MobileApp
 		{
 			
 			//start up page
-			MainPage = new NavigationPage(new HomePage());
+			MainPage = new NavigationPage(new MovieListPage());
 
 		}
 

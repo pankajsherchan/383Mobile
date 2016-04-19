@@ -14,8 +14,10 @@ namespace Sp16p3g8MobileApp
 				BackgroundColor = Color.Yellow;
 
 
+            var movieImage = new Image();
 
-				var NameLabel = new Label {
+
+                var NameLabel = new Label {
 				Text = "Name:" +showtime.Movie.Name,
 					Font = Font.SystemFontOfSize (NamedSize.Small)
 				};

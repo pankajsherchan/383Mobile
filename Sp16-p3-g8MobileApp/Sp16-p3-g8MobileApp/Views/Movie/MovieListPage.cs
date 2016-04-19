@@ -57,12 +57,14 @@ namespace Sp16p3g8MobileApp
 
 			ListView listView = new ListView ();
 			listView.ItemsSource = movies;
-	
-			movieSearchBar.TextChanged += (sender, e) => {
+            listView.HasUnevenRows = true;
+            listView.SeparatorColor = Color.FromHex("#ddd");
+
+            movieSearchBar.TextChanged += (sender, e) => {
 				if(string.IsNullOrWhiteSpace(movieSearchBar.Text))
 					listView.ItemsSource = movies;
 				else
-					listView.ItemsSource = movies.Where(p=>p.Movie.Name.Contains(movieSearchBar.Text.ToLower()));
+					listView.ItemsSource = movies.Where(p=>p.Movie.Name.ToLower().Contains(movieSearchBar.Text.ToLower()));
 
 			};
 
