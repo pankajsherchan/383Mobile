@@ -26,7 +26,8 @@ namespace Sp16p3g8MobileApp
         public async Task<List<Showtime>> GetMovieAsync()
         {
            // var client = new RestClient("http://192.168.1.40:51269/");
-            var client = new RestClient("http://192.168.1.17:51269/");
+          //  var client = new RestClient("http://192.168.1.17:51269/");
+            var client = new RestClient("http://147.174.168.44:51269/");
             var request = new RestRequest("api/showtimes", Method.GET);
 
             var response = await client.Execute<List<Showtime>>(request);
