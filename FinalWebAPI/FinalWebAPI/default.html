@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html ng-app="eventsApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Kiosk</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/landing-page.css" rel="stylesheet" />
+    <link href="Content/loading-bar.css" rel="stylesheet" />
+    <script src="Scripts/jquery-2.2.3.min.js"></script>
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+    <script src="Scripts/loading-bar.js"></script>
+    <script src="app/app.js"></script>
+    <link href="Content/styles.css" rel="stylesheet" />
+    <script src="app/controllers/controller.js"></script>
+    
+</head>
+<body background="img/city.jpg" style="background:url(img/city.jpg)fixed #999; padding:50px 50px 50px 50px" ng-cloak>
+    
+    <div id="wrapper">
+        <div id="header">
+        </div>
+        <div id="page_content">
+            <div class="container">
+                <div class="row-fluid">
+                    <div ng-controller="movieController">
+                        <div ng-view>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear" style="padding:10px"></div>
+            <div id="footer">
+                Copyright &copy; 2016.<br>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

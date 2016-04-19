@@ -1,0 +1,29 @@
+﻿<div class="row">
+    <div class="col-xs-1 col-xs-3 text-center" style="right:50px; top:20px">
+        <a class="story-title" id="" href="#/movies/{{movie.id}}"><img alt="" src="img/{{movie.id}}.jpg" style="width:180px;height:260px"></a>
+    </div>
+    <div class="col-xs-10 col-xs-9" id="" style="left:80px; top:10px">
+        <h3 class="" style="color:#ffffff">{{movie.title}}</h3>
+
+        <div class="row">
+            <div class="col-xs-9 col-xs-10">
+                <span class="" id="" style="color:#0c0c27; font-size: 16px">{{movie.desc}}</span>
+                <br />
+                <br />
+                <br />
+            </div>
+            <div class="col-xs-9 col-xs-9"><label>Show Times</label></div>
+            <div  ng-repeat="times in movie.time" class="row">
+                
+                <div class="col-xs-9 col-xs-10">
+                    <b class="" id="" style="color:#0c0c27; font-size: 16px">{{times.times}}{{hour}} &emsp; ----- Seats remaining for this time slot: {{times.seats}}</span>
+                </div>
+            </div>
+        </div>
+        <br class="">
+        <br class="">
+        <div><a class="btn btn-primary btn-lg" role="button" href="#/movieList">Back to List</a></div></div>
+    </div>
+    <div class="container"></div>
+    <div class="row"></div>
+</div>
