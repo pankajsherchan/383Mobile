@@ -10,6 +10,7 @@ namespace Sp16p3g8MobileApp
 		public MovieTemplate ()
 		{
 
+            
             var image = new CircleImage {
                 //BorderColor = Color.White,
                 //BorderThickness = 3,
@@ -22,7 +23,7 @@ namespace Sp16p3g8MobileApp
 
                 
             };
-            image.SetBinding(Image.SourceProperty , "movie2.png");
+            image.SetBinding(Image.SourceProperty , "Movie.Poster");
 
             var NameLabel = new Label
             {
@@ -41,7 +42,7 @@ namespace Sp16p3g8MobileApp
             };
 
 
-            ReleaseDateLabel.SetBinding(Label.TextProperty, new Binding("Movie.ReleaseDate", stringFormat :"{0} year"));
+            ReleaseDateLabel.SetBinding(Label.TextProperty, new Binding("Movie.ReleaseDate", stringFormat :"Release Year: {0}"));
 
             var statusLayout = new StackLayout {
 
@@ -55,7 +56,7 @@ namespace Sp16p3g8MobileApp
 
             };
 
-            ratingLabel.SetBinding(Label.TextProperty, new Binding("Movie.Rating", stringFormat: "{0}"));
+            ratingLabel.SetBinding(Label.TextProperty, new Binding("Movie.imdbRating", stringFormat: "Rating {0}"));
             var ratingImage = new Image
             {
                 Source = "star.png",
@@ -77,17 +78,21 @@ namespace Sp16p3g8MobileApp
             };
 
             var tapImage = new Image {
-                Source = "tap.png",
+                Source = "arrow.png",
                 HorizontalOptions = LayoutOptions.End,
                 HeightRequest= 13
             };
 
+            
             var finalLayout = new StackLayout {
                 Spacing = 0,
                 Padding = new Thickness(10, 10, 10, 10),
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                Children = { image, DetailLayout, tapImage}
+                Children = { image, DetailLayout
+
+                },
+                BackgroundColor = Color.White
             };
             this.View = finalLayout;
 

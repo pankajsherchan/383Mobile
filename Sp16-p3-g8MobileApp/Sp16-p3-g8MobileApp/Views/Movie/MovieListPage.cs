@@ -30,7 +30,8 @@ namespace Sp16p3g8MobileApp
                     {
                         Id = movie.Id,
                         Screen = movie.Screen,
-                        StartDateTime = movie.StartDateTime,
+                        StartTime = movie.StartTime,
+                        StartDate =movie.StartDate,
                         ScreenId = movie.ScreenId,
                         Movie = movie.Movie,
                         MovieId =movie.MovieId

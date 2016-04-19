@@ -14,7 +14,7 @@ namespace Sp16p3g8MobileApp
 				Text =movie.Name};
 			var ReleaseDateEntry = new Entry {Placeholder = "Location", HorizontalOptions= LayoutOptions.FillAndExpand, Text=movie.ReleaseDate};
 			var RatingEntry = new Entry {Placeholder = "Points", HorizontalOptions= LayoutOptions.FillAndExpand ,
-				Text=movie.Rating.ToString()};
+				Text=movie.imdbRating.ToString()};
 			var DescriptionEntry = new Entry { 
 				WidthRequest = 300,
 				HeightRequest = 200,

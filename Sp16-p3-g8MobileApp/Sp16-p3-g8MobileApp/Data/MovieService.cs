@@ -42,7 +42,8 @@ namespace Sp16p3g8MobileApp
                     MovieId = showtime.MovieId,
                     Movie = showtime.Movie,
                     ScreenId = showtime.ScreenId,
-                    StartDateTime = showtime.StartDateTime,
+                    StartDate = showtime.StartDate,
+                    StartTime = showtime.StartTime,
                    
                     Screen = showtime.Screen
                 });

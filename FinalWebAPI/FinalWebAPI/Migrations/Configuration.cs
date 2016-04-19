@@ -37,11 +37,11 @@ namespace FinalWebAPI.Migrations
             //    );
             //
 
-            //context.Users.AddOrUpdate(
-            //   u => u.Id,
-            //   new User { FirstName = "Admin", LastName = "Admin", Email = "383@gmail.com", Role = "Admin", Password = Crypto.HashPassword("password") }
+            context.Users.AddOrUpdate(
+               u => u.Id,
+               new User { FirstName = "Admin", LastName = "Admin", Email = "383@gmail.com", Role = "Admin", Password = Crypto.HashPassword("password") }
 
-            //   );
+               );
 
             context.Screens.AddOrUpdate(
                s => s.Id,
