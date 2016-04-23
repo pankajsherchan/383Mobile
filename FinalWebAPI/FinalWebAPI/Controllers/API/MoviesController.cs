@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Threading.Tasks;
 using System.Web.Http.Description;
 using FinalWebAPI.Models;
+using FinalWebAPI.Models.DTOs;
 
 namespace FinalWebAPI.Controllers.API
 {
@@ -18,10 +19,10 @@ namespace FinalWebAPI.Controllers.API
         private FinalWebAPIContext db = new FinalWebAPIContext();
 
         // GET: api/Movies
-        public IQueryable<Movie> GetMovies()
-        {
-            return db.Movies;
-        }
+        //public IQueryable<Movie> GetMovies()
+        //{
+        //    return db.Movies;
+        //}
 
         // GET: api/Movies/5
         [ResponseType(typeof(Movie))]
@@ -35,6 +36,52 @@ namespace FinalWebAPI.Controllers.API
 
             return Ok(movie);
         }
+
+        [HttpGet]
+        [ActionName("Showing")]
+        public IHttpActionResult Get()
+        {
+
+            //            List<ShowingDTO> showingMovies = new List<ShowingDTO>();
+
+
+            //List<ShowingDTO> showingMovies = (from c in db.Movies
+            //                                  select new ShowingDTO()
+            //                                  {
+            //                                      Id = c.Id,
+            //                                      Name = c.Name,
+            //                                      Year = c.Year,
+            //                                      showtimes = (from p in db.Showtimes where (p.MovieId == c.Id && p.StartDate == DateTime.Today) select p).ToList<Showtime>()
+            //                                  }).ToList<ShowingDTO>();
+
+
+            List<ShowingDTO> showingMovies =
+            db.Movies.Where(x => x.Showtimes.Any(y => y.StartDate == DateTime.Today)).Select(x => new ShowingDTO
+            {
+
+                //StartTime = (from p in db.Showtimes where (p.MovieId == x.Id) select p.StartTime).ToList<string>(),
+                Id = x.Id,
+                Poster = x.Poster,
+                Duration = x.Duration,
+                Genre = x.Genre,
+                Name = x.Name,
+                Year = x.Year,
+                Description = x.Description,
+                showtimes = x.Showtimes.ToList<Showtime>()
+
+            }).ToList<ShowingDTO>();
+
+            if (showingMovies == null)
+            {
+
+                return NotFound();
+            }
+
+
+            return Ok(showingMovies);
+        }
+
+        
 
         // PUT: api/Movies/5
         [ResponseType(typeof(void))]
@@ -115,5 +162,6 @@ namespace FinalWebAPI.Controllers.API
         {
             return db.Movies.Count(e => e.Id == id) > 0;
         }
+
     }
 }

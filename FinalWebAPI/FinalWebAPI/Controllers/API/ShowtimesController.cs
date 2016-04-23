@@ -11,7 +11,7 @@ using System.Web.Http.Description;
 using System.Threading.Tasks;
 using FinalWebAPI.Models;
 
-namespace FinalWebAPI.Controllers.API
+namespace FinalWebAPI.Controllers.AP
 {
     public class ShowtimesController : ApiController
     {
