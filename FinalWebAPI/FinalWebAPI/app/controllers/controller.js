@@ -1,4 +1,6 @@
 ﻿'use strict';
+var eventsApp = angular.module('eventsApp', ['ngRoute', 'angular-loading-bar']);
+
 eventsApp.controller('movieController',
 function movieController($scope, $routeParams, $http) {
 

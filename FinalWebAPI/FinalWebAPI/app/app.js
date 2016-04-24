@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var eventsApp = angular.module('eventsApp', ['ngRoute', 'angular-loading-bar']);
+var eventsApp = angular.module('eventsApp', ['ngRoute', 'angular-loading-bar', 'ngResource']);
 eventsApp.config(function($routeProvider) {
     $routeProvider
 
@@ -15,7 +15,7 @@ eventsApp.config(function($routeProvider) {
             controller: 'movieController'
         })
         // route for the movie detail page
-        .when('/movies/:id', {
+        .when('/movies/:Id', {
             templateUrl: 'app/views/movie.html',
             controller: 'movieController'
         })

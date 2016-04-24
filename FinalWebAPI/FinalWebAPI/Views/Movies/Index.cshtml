@@ -18,13 +18,17 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.imdbRating)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Duration)
         </th>
+     
+       
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+      
+     
+        <th>
+            @Html.DisplayNameFor(model => model.imdbRating)
         </th>
         <th></th>
     </tr>
@@ -38,13 +42,15 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.imdbRating)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Duration)
         </td>
+       
         <td>
-            @Html.DisplayFor(modelItem => item.ReleaseDate)
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.imdbRating)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
