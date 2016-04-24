@@ -65,6 +65,7 @@ namespace FinalWebAPI.Controllers.API
                 Duration = x.Duration,
                 Genre = x.Genre,
                 Name = x.Name,
+                imdbRating = x.imdbRating,
                 Year = x.Year,
                 Description = x.Description,
                 showtimes = x.Showtimes.ToList<Showtime>()
@@ -81,6 +82,36 @@ namespace FinalWebAPI.Controllers.API
             return Ok(showingMovies);
         }
 
+
+        public IHttpActionResult Get(DateTime date) {
+
+            List<ShowingDTO> showingMovies =
+          db.Movies.Where(x => x.Showtimes.Any(y => y.StartDate == date)).Select(x => new ShowingDTO
+          {
+
+                //StartTime = (from p in db.Showtimes where (p.MovieId == x.Id) select p.StartTime).ToList<string>(),
+                Id = x.Id,
+              Poster = x.Poster,
+              Duration = x.Duration,
+              imdbRating = x.imdbRating,
+              Genre = x.Genre,
+              Name = x.Name,
+              Year = x.Year,
+              Description = x.Description,
+              showtimes = x.Showtimes.ToList<Showtime>()
+
+          }).ToList<ShowingDTO>();
+
+            if (showingMovies == null)
+            {
+
+                return NotFound();
+            }
+
+
+            return Ok(showingMovies);
+
+        }
         
 
         // PUT: api/Movies/5

@@ -18,6 +18,7 @@ namespace FinalWebAPI.Models.DTOs
 
         public string Description { get; set; }
 
+        public string imdbRating { get; set; }
         public string Year { get; set; }
 
 
