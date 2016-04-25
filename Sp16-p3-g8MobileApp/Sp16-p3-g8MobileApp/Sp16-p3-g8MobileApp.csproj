@@ -32,8 +32,6 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="HistoryPage.cs" />
-    <Compile Include="History\HistoryObject.cs" />
     <Compile Include="Models\Screen.cs" />
     <Compile Include="Models\Showtime.cs" />
     <Compile Include="Sp16-p3-g8MobileApp.cs" />
