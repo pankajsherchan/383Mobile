@@ -1,4 +1,5 @@
 ﻿using FinalWebAPI.APIHelper;
+using FinalWebAPI.Barcode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,9 @@ namespace FinalWebAPI.Controllers
     {
         public ActionResult Index()
         {
+
+            //BarcodeGenerator a = new BarcodeGenerator();
+            //a.generate();
 
             //MovieAPI1 a = new MovieAPI1();
             //a.Get();
