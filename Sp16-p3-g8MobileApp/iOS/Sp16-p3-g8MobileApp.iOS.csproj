@@ -132,6 +132,13 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="TicketStorageIOS.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sp16-p3-g8MobileApp\Sp16-p3-g8MobileApp.csproj">
+      <Project>{e0d3dbbe-b2f1-45dd-979b-fd2359fd5dbb}</Project>
+      <Name>Sp16-p3-g8MobileApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
