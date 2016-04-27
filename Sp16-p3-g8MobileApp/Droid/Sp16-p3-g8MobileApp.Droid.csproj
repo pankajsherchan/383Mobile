@@ -158,7 +158,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TicketStorage.cs" />
+    <Compile Include="TicketStorageDroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
