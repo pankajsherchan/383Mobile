@@ -34,6 +34,7 @@ namespace Sp16p3g8MobileApp.Droid {
 
         //IMPORTANT! VALIDATE TO MAKE SURE THE SAME QR CODE HAS NOT BEEN SCANED BEFORE USING THIS METHOD!
         public void Save(string filename, string NewCode) {
+            //We might need this
             //List<string> codes = LoadCodes(filename);
             //codes.Add(NewCode);
             string JSONCode = JsonConvert.SerializeObject(NewCode); //JSONIFY!
