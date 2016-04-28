@@ -11,7 +11,6 @@
                     <td><b>Type</b></td>
                     <td class="tdCenter"><b>Quantity</b></td>
                     <td></td>
-                    <td></td>
                     <td class="tdRight"><b>Price</b></td>
                 </tr>
 
@@ -53,9 +52,17 @@
                     <td><b>Total</b></td>
                     <td class="tdCenter"><b>{{cart.getTotalCount()}}</b></td>
                     <td></td>
+                    <td></td>
                     <td class="tdRight"><b>{{cart.getTotalPrice() | currency}}</b></td>
                 </tr>
             </table>
+            <!--<div>
+                <button class="btn btn-block btn-primary"
+                        ng-click="update(cart.items)"
+                        ng-disabled="cart.getTotalCount() < 1">
+                    <i class="icon-ok icon-white" /> Purchase
+                </button>
+            </div>-->
         </div>
 
         <!-- buttons -->
@@ -68,11 +75,13 @@
             </div>
             <div>
                 <button class="btn btn-block btn-primary"
-                        ng-show="emailInfo.text"
-                        ng-click="update(cart.items, emailInfo.text)"
+                        ng-click="update(cart.items)"
                         ng-disabled="cart.getTotalCount() < 1">
                     <i class="icon-ok icon-white" /> Purchase
                 </button>
+            </div>
+            <div>
+                <img   ng-src ="{{image}}" />
             </div>
         </div>
         <br />

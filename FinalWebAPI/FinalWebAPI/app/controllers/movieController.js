@@ -6,6 +6,8 @@
             //   haha;
             //  alert($routeParams);
             $scope.waitMessage = "";
+            $scope.qrcodeString = "";
+            $scope.qrcode = "";
             $scope.type = "";
             $scope.adult = 10.00;
             $scope.child = 5.00;
@@ -24,6 +26,18 @@
                     $scope.movies = data.data;
                     $scope.waitMessage = "";
                 })
+            }
+
+            $scope.update = function (qrcode) {
+                for (var i = 0; i < qrcode.length; i++) {
+                    $scope.qrcodeString += "\n Movie: " + qrcode[i].Name + " Type: " + qrcode[i].type + " Price: " + qrcode[i].price + "";
+                }
+
+                $scope.image = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + $scope.qrcodeString;
+                //$http.get("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=dafdsasf").then(function (data) {
+                //    $scope.image = data.data;
+                //    $scope.waitMessage = "";
+                
             }
 
             $scope.upcoming = function () {

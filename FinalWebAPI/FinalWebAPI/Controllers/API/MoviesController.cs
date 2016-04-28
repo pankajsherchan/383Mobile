@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 using System.Web.Http.Description;
 using FinalWebAPI.Models;
 using FinalWebAPI.Models.DTOs;
+using System.Web.Mvc;
+using System.Drawing;
+using System.IO;
+using ZXing.QrCode;
 
 namespace FinalWebAPI.Controllers.API
 {
@@ -37,7 +41,7 @@ namespace FinalWebAPI.Controllers.API
         //    return Ok(movie);
         //}
 
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         public IHttpActionResult Get()
         {
 
@@ -128,10 +132,9 @@ namespace FinalWebAPI.Controllers.API
         //    return Ok(showingMovies);
 
         //}
-        
 
-        // PUT: api/Movies/5
-        [ResponseType(typeof(void))]
+    // PUT: api/Movies/5
+    [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutMovie(int id, Movie movie)
         {
             if (!ModelState.IsValid)

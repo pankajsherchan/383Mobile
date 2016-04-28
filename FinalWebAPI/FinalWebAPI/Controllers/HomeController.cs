@@ -28,7 +28,7 @@ namespace FinalWebAPI.Controllers
 
 
 
-        public FileContentResult CaptchaImage(bool noisy = true)
+        public FileContentResult CaptchaImage( string qrcode)
         {
             var rand = new Random((int)DateTime.Now.Ticks);
 
@@ -42,7 +42,7 @@ namespace FinalWebAPI.Controllers
             {
                 QRCodeWriter qr = new QRCodeWriter();
 
-                string url = "http://www.developerbyte.com";
+                string url = qrcode;
 
                 var matrix = qr.encode(url, ZXing.BarcodeFormat.QR_CODE, 200, 200);
 
@@ -60,6 +60,8 @@ namespace FinalWebAPI.Controllers
                 img1.Save(mem, System.Drawing.Imaging.ImageFormat.Png);
                 img = this.File(mem.GetBuffer(), "image/png");
             }
+
+            var file = File(img.FileContents, img.ContentType);
 
             return File(img.FileContents, img.ContentType);
         }

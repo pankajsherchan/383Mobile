@@ -7,7 +7,7 @@
     <div class="col-md-4">
 
         @*<a id="GetCaptcha" href="javascript:void(0)">Refresh</a>*@
-        <img id="CaptchaImg" alt="Captcha" src="@Url.Action("CaptchaImage")" style="" />
+        <img id="CaptchaImg" alt="Captcha" src="@Url.Action("CaptchaImage" , new {qrcode ="movieinfor" })" style="" />
         @*<img src="@Url.Action("Image", new { agha = "foo bar" })" alt="" />*@
     </div>
 
