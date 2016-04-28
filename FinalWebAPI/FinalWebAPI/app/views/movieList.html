@@ -1,7 +1,10 @@
-﻿<div>
+﻿<div ng-init="httpget()">
+    <h3>{{waitMessage}}</h3>
     <h3 class="" style="">List of movies</h3>
     <span style="padding-left: 10px">Search: </span><input ng-model="search">
-        <div ng-repeat="movie in data  | filter:search" class="row" >
+    <p></p>
+    <div><a class="btn btn-danger btn-lg" role="button" href="#/">Cancel</a></div>
+        <div ng-repeat="movie in movies  | filter:search" class="row" >
             <br class="">
             <div class="col-xs-1 col-xs-3 text-center" style="right:50px; top:20px">
                 <!--<a class="story-title" id="" href="#/movies/{{movie.id}}"><img alt="" src="img/{{movie.id}}.jpg" style="width:180px;height:260px"></a>-->

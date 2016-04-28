@@ -1,7 +1,12 @@
 ﻿<div class="row">
+    <a href="default.html#/cart" title="go to shopping cart">
+        <i class="icon-shopping-cart" />
+        <b>{{cart.getTotalCount()}}</b> items, Total: <b>{{cart.getTotalPrice() | currency}}</b>
+        <span ng-show="cart.getTotalCount(movie.id) > 0"><br />this item is in the cart</span>
+    </a>
     <div class="col-xs-1 col-xs-3 text-center" style="right:50px; top:20px">
         <a class="story-title" id="" href="#/movies/{{movie.Id}}"><img alt="" src="{{movie.Poster}}" style="width:180px;height:260px"></a>
-       
+
     </div>
     <div class="col-xs-10 col-xs-9" id="" style="left:80px; top:10px">
         <h3 class="" style="color:#ffffff">{{movie.Name}}</h3>
@@ -14,16 +19,41 @@
                 <br />
             </div>
             <div class="col-xs-9 col-xs-9"><label>Show Times</label></div>
-            <div  ng-repeat="showtime in movie.showtimes" class="row">
-                
+            <div ng-repeat="showtime in movie.showtimes" class="row">
+
                 <div class="col-xs-9 col-xs-10">
-                    <b class="" id="" style="color:#0c0c27; font-size: 16px"> <span>{{showtime.StartTime}} &emsp; ----- Seats remaining for this time slot: {{times.seats}}  {{showtime.Screen.ScreenNumber}}</span></b>
+                    <b class="" id="" style="color:#0c0c27; font-size: 16px"> <span>{{showtime.StartTime}} &emsp; ----- Seats remaining: {{times.seats}} ---Screen Number:  {{showtime.Screen.ScreenNumber}}</span></b>
                 </div>
             </div>
         </div>
         <br class="">
         <br class="">
-        <div><a class="btn btn-primary btn-lg" role="button" href="#/movieList">Back to List</a></div></div>
+        <div>
+            <p></p>
+            <!-- buttons -->
+            <div class="span4">
+                <button class="btn btn-block"
+                        onclick="window.location.href='default.html#/movieList'">
+                    <i class="icon-chevron-left" /> back to list
+                </button>
+                <button class="btn btn-block btn-success"
+                        ng-click="cart.addItem(product.productId, product.name, product.price, 1)"
+                        ng-disabled="product.inventoryCount - cart.getTotalCount(product.productId) < 1">
+                    <i class="icon-shopping-cart icon-white" /> add Adult Ticket
+                </button>
+                <button class="btn btn-block btn-success"
+                        ng-click="cart.addItem(product.productId, product.name, product.price, 1)"
+                        ng-disabled="product.inventoryCount - cart.getTotalCount(product.productId) < 1">
+                    <i class="icon-shopping-cart icon-white" /> add Child Ticket
+                </button>
+                <button class="btn btn-block btn-danger"
+                        onclick="window.location.href=''">
+                    <i class="icon-chevron-left" /> Cancel
+                </button>
+            </div>
+        </div>
     </div>
-    <div class="container"></div>
-    <div class="row"></div>
+</div>
+</div>
+<div class="container"></div>
+<div class="row"></div>

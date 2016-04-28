@@ -27,3 +27,19 @@ eventsApp.config(function($routeProvider) {
         });
     $routeProvider.otherwise({ redirectTo: '/' });
 });
+eventsApp.factory("DataService", function () {
+
+
+    // create shopping cart
+    var myCart = new shoppingCart("eventsApp");
+
+    myCart.addCheckoutParameters("Purchase");
+
+
+
+    // return data object with store and cart
+    return {
+        cart: myCart
+    };
+
+});

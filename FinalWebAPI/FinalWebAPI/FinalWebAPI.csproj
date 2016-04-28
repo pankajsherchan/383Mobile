@@ -263,6 +263,7 @@
     <Content Include="app\controllers\controller.js" />
     <Content Include="app\controllers\movieController.js" />
     <Content Include="app\services\MovieService.js" />
+    <Content Include="app\services\shoppingCart.js" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\movie.html" />
     <Content Include="app\views\movieList.html" />
