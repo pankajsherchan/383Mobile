@@ -25,41 +25,25 @@ namespace FinalWebAPI.Controllers.API
         //}
 
         // GET: api/Movies/5
-        [ResponseType(typeof(Movie))]
-        public async Task<IHttpActionResult> GetMovie(int id)
-        {
-            Movie movie = await db.Movies.FindAsync(id);
-            if (movie == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(Movie))]
+        //public async Task<IHttpActionResult> GetMovie(int id)
+        //{
+        //    Movie movie = await db.Movies.FindAsync(id);
+        //    if (movie == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(movie);
-        }
+        //    return Ok(movie);
+        //}
 
         [HttpGet]
-        [ActionName("Showing")]
         public IHttpActionResult Get()
         {
-
-            //            List<ShowingDTO> showingMovies = new List<ShowingDTO>();
-
-
-            //List<ShowingDTO> showingMovies = (from c in db.Movies
-            //                                  select new ShowingDTO()
-            //                                  {
-            //                                      Id = c.Id,
-            //                                      Name = c.Name,
-            //                                      Year = c.Year,
-            //                                      showtimes = (from p in db.Showtimes where (p.MovieId == c.Id && p.StartDate == DateTime.Today) select p).ToList<Showtime>()
-            //                                  }).ToList<ShowingDTO>();
-
 
             List<ShowingDTO> showingMovies =
             db.Movies.Where(x => x.Showtimes.Any(y => y.StartDate == DateTime.Today)).Select(x => new ShowingDTO
             {
-
-                //StartTime = (from p in db.Showtimes where (p.MovieId == x.Id) select p.StartTime).ToList<string>(),
                 Id = x.Id,
                 Poster = x.Poster,
                 Duration = x.Duration,
@@ -83,24 +67,26 @@ namespace FinalWebAPI.Controllers.API
         }
 
 
-        public IHttpActionResult Get(DateTime date) {
+
+        
+        public IHttpActionResult Get( int id)
+        {
+
 
             List<ShowingDTO> showingMovies =
-          db.Movies.Where(x => x.Showtimes.Any(y => y.StartDate == date)).Select(x => new ShowingDTO
-          {
-
-                //StartTime = (from p in db.Showtimes where (p.MovieId == x.Id) select p.StartTime).ToList<string>(),
+            db.Movies.Where(x => x.Showtimes.Any(y => (y.StartDate != DateTime.Today && y.StartDate > DateTime.Today))).Select(x => new ShowingDTO
+            {
                 Id = x.Id,
-              Poster = x.Poster,
-              Duration = x.Duration,
-              imdbRating = x.imdbRating,
-              Genre = x.Genre,
-              Name = x.Name,
-              Year = x.Year,
-              Description = x.Description,
-              showtimes = x.Showtimes.ToList<Showtime>()
+                Poster = x.Poster,
+                Duration = x.Duration,
+                Genre = x.Genre,
+                Name = x.Name,
+                imdbRating = x.imdbRating,
+                Year = x.Year,
+                Description = x.Description,
+                showtimes = x.Showtimes.ToList<Showtime>()
 
-          }).ToList<ShowingDTO>();
+            }).ToList<ShowingDTO>();
 
             if (showingMovies == null)
             {
@@ -110,8 +96,38 @@ namespace FinalWebAPI.Controllers.API
 
 
             return Ok(showingMovies);
-
         }
+
+
+        //public IHttpActionResult Get(DateTime date) {
+
+        //    List<ShowingDTO> showingMovies =
+        //  db.Movies.Where(x => x.Showtimes.Any(y => y.StartDate == date)).Select(x => new ShowingDTO
+        //  {
+
+        //        //StartTime = (from p in db.Showtimes where (p.MovieId == x.Id) select p.StartTime).ToList<string>(),
+        //        Id = x.Id,
+        //      Poster = x.Poster,
+        //      Duration = x.Duration,
+        //      imdbRating = x.imdbRating,
+        //      Genre = x.Genre,
+        //      Name = x.Name,
+        //      Year = x.Year,
+        //      Description = x.Description,
+        //      showtimes = x.Showtimes.ToList<Showtime>()
+
+        //  }).ToList<ShowingDTO>();
+
+        //    if (showingMovies == null)
+        //    {
+
+        //        return NotFound();
+        //    }
+
+
+        //    return Ok(showingMovies);
+
+        //}
         
 
         // PUT: api/Movies/5

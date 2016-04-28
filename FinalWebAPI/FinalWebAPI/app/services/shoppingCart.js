@@ -24,8 +24,8 @@ shoppingCart.prototype.loadItems = function () {
             var items = JSON.parse(items);
             for (var i = 0; i < items.length; i++) {
                 var item = items[i];
-                if (item.id != null && item.Name != null) {
-                    item = new cartItem(item.id, item.Name, item.quantity);
+                if (item.Id != null && item.Name != null && item.price != null && item.inventoryCount != null) {
+                    item = new cartItem(item.Id, item.Name, item.price, item.inventoryCount, item.type);
                     this.items.push(item);
                 }
             }
@@ -45,14 +45,15 @@ shoppingCart.prototype.saveItems = function () {
 
 
 // adds an item to the cart
-shoppingCart.prototype.addItem = function (id, Name) {
+shoppingCart.prototype.addItem = function (Id, Name, price, quantity, type) {
+    quantity = this.toNumber(quantity);
     if (quantity != 0) {
 
         // update quantity for existing item
         var found = false;
         for (var i = 0; i < this.items.length && !found; i++) {
             var item = this.items[i];
-            if (item.id == id) {
+            if (item.Id == Id && item.price == price) {
                 found = true;
                 item.inventoryCount = this.toNumber(item.inventoryCount + quantity);
                 if (item.inventoryCount <= 0) {
@@ -63,7 +64,7 @@ shoppingCart.prototype.addItem = function (id, Name) {
 
         // new item, add now
         if (!found) {
-            var item = new cartItem(productId, name, price, quantity);
+            var item = new cartItem(Id, Name, price, quantity, type);
             this.items.push(item);
         }
 
@@ -73,11 +74,11 @@ shoppingCart.prototype.addItem = function (id, Name) {
 }
 
 // get the total price for all items currently in the cart
-shoppingCart.prototype.getTotalPrice = function (productId) {
+shoppingCart.prototype.getTotalPrice = function (Id) {
     var total = 0;
     for (var i = 0; i < this.items.length; i++) {
         var item = this.items[i];
-        if (productId == null || item.productId == productId) {
+        if (Id == null || item.Id == Id) {
             total += this.toNumber(item.inventoryCount * item.price);
         }
     }
@@ -85,11 +86,11 @@ shoppingCart.prototype.getTotalPrice = function (productId) {
 }
 
 // get the total price for all items currently in the cart
-shoppingCart.prototype.getTotalCount = function (id) {
+shoppingCart.prototype.getTotalCount = function (Id) {
     var count = 0;
     for (var i = 0; i < this.items.length; i++) {
         var item = this.items[i];
-        if (id == null || item.id == id) {
+        if (Id == null || item.Id == Id) {
             count += this.toNumber(item.inventoryCount);
         }
     }
@@ -124,11 +125,11 @@ shoppingCart.prototype.checkout = function (serviceName, clearCart, quantity) {
 }
 
 shoppingCart.prototype.checkoutPurchase = function (parms, clearCart) {
-    
+
     //$http.put("http://localhost:58198/api/Products/", this.items)
     this.clearItems();
     //$scope.store.products = data.data;
-    
+
 }
 shoppingCart.prototype.toNumber = function (value) {
     value = value * 1;
@@ -146,9 +147,11 @@ function checkoutParameters(serviceName, options) {
 //----------------------------------------------------------------
 // items in the cart
 //
-function cartItem(id, name, quantity) {
-    this.id = id;
+function cartItem(Id, Name, price, quantity, type) {
+    this.Id = Id;
     this.Name = Name;
-    this.quantity = quantity;
+    this.price = price * 1;
+    this.inventoryCount = quantity * 1;
+    this.type = type;
 }
 

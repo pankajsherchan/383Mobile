@@ -8,7 +8,9 @@
                 <!-- header -->
                 <tr class="well">
                     <td><b>Item</b></td>
+                    <td><b>Type</b></td>
                     <td class="tdCenter"><b>Quantity</b></td>
+                    <td></td>
                     <td></td>
                     <td class="tdRight"><b>Price</b></td>
                 </tr>
@@ -21,8 +23,9 @@
                 </tr>
 
                 <!-- cart items -->
-                <tr ng-repeat="item in cart.items | orderBy:'name'">
-                    <td>{{item.name}}</td>
+                <tr ng-repeat="item in cart.items | orderBy:'Name'">
+                    <td>{{item.Name}}</td>
+                    <td>{{item.type}}</td>
                     <td class="tdCenter">
                         <div>
                             {{item.inventoryCount}}
@@ -31,13 +34,13 @@
                     <td>
                         <div>
                             <button class="btn btn-success" type="button" style="float: right"
-                                    ng-disabled="item.inventoryCount > store.getProduct(item.productId).inventoryCount - 1"
-                                    ng-click="cart.addItem(item.productId, item.name, item.price, +1)">
+                                    ng-disabled="item.inventoryCount < 0"
+                                    ng-click="cart.addItem(item.Id, item.Name, item.price, +1, item.type)">
                                 +
                             </button>
                             <button class="btn btn-inverse" type="button" style="float: right"
                                     ng-disabled="item.inventoryCount < 1"
-                                    ng-click="cart.addItem(item.productId, item.name, item.price, -1)">
+                                    ng-click="cart.addItem(item.Id, item.Name, item.price, -1, item.type)">
                                 -
                             </button>
                         </div>

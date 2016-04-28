@@ -6,6 +6,10 @@
             //   haha;
             //  alert($routeParams);
             $scope.waitMessage = "";
+            $scope.type = "";
+            $scope.adult = 10.00;
+            $scope.child = 5.00;
+            $scope.old = 7.00;
             $scope.cart = DataService.cart;
             MovieService.getMovies()
           .success(function (response) {
@@ -17,6 +21,14 @@
             $scope.httpget = function () {
                 $scope.waitMessage = "Please wait while we grab a list of movies.....";
                 $http.get("http://localhost:51269/api/movies").then(function (data) {
+                    $scope.movies = data.data;
+                    $scope.waitMessage = "";
+                })
+            }
+
+            $scope.upcoming = function () {
+                $scope.waitMessage = "Please wait while we grab a list of movies.....";
+                $http.get("http://localhost:51269/api/movies/1").then(function (data) {
                     $scope.movies = data.data;
                     $scope.waitMessage = "";
                 })

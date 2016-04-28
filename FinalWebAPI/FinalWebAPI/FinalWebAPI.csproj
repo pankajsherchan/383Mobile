@@ -268,6 +268,7 @@
     <Content Include="app\views\movie.html" />
     <Content Include="app\views\movieList.html" />
     <Content Include="app\views\shoppingCart.html" />
+    <Content Include="app\views\UpComingMovies.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

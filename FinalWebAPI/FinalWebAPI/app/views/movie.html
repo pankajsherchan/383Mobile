@@ -2,7 +2,7 @@
     <a href="default.html#/cart" title="go to shopping cart">
         <i class="icon-shopping-cart" />
         <b>{{cart.getTotalCount()}}</b> items, Total: <b>{{cart.getTotalPrice() | currency}}</b>
-        <span ng-show="cart.getTotalCount(movie.id) > 0"><br />this item is in the cart</span>
+        <span ng-show="cart.getTotalCount(movie.Id) > 0"><br />this item is in the cart</span>
     </a>
     <div class="col-xs-1 col-xs-3 text-center" style="right:50px; top:20px">
         <a class="story-title" id="" href="#/movies/{{movie.Id}}"><img alt="" src="{{movie.Poster}}" style="width:180px;height:260px"></a>
@@ -37,13 +37,13 @@
                     <i class="icon-chevron-left" /> back to list
                 </button>
                 <button class="btn btn-block btn-success"
-                        ng-click="cart.addItem(product.productId, product.name, product.price, 1)"
-                        ng-disabled="product.inventoryCount - cart.getTotalCount(product.productId) < 1">
+                        ng-click="cart.addItem(movie.Id, movie.Name, adult, 1, 'adult')"
+                        >
                     <i class="icon-shopping-cart icon-white" /> add Adult Ticket
                 </button>
                 <button class="btn btn-block btn-success"
-                        ng-click="cart.addItem(product.productId, product.name, product.price, 1)"
-                        ng-disabled="product.inventoryCount - cart.getTotalCount(product.productId) < 1">
+                        ng-click="cart.addItem(movie.Id, movie.Name, child, 1, 'child')"
+                       >
                     <i class="icon-shopping-cart icon-white" /> add Child Ticket
                 </button>
                 <button class="btn btn-block btn-danger"
