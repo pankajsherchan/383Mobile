@@ -48,7 +48,7 @@
                     $scope.qrcodeString += "\n [Movie: " + qrcode[i].Name + " Type: " + qrcode[i].type + " Price: " + qrcode[i].price + " Time: " + qrcode[i].time + "]";
                 }
 
-                $scope.image = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + $scope.qrcodeString;
+                 $scope.image = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + $scope.qrcodeString;
                 //$http.get("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=dafdsasf").then(function (data) {
                 //    $scope.image = data.data;
                 //    $scope.waitMessage = "";

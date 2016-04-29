@@ -63,13 +63,6 @@
                     <td class="tdRight"><b>{{cart.getTotalPrice() | currency}}</b></td>
                 </tr>
             </table>
-            <!--<div>
-                <button class="btn btn-block btn-primary"
-                        ng-click="update(cart.items)"
-                        ng-disabled="cart.getTotalCount() < 1">
-                    <i class="icon-ok icon-white" /> Purchase
-                </button>
-            </div>-->
         </div>
 
         <!-- buttons -->
@@ -78,8 +71,9 @@
             <div class="row">
                 <div class="col-md-4">
                     <button class="btn btn-block btn-primary"
-                            ng-click="update(cart.items)"
-                            ng-disabled="cart.getTotalCount() < 1">
+                            
+                            ng-disabled="cart.getTotalCount() < 1"
+                            onclick="window.location.href = 'default.html#/confirmation'">
                         <i class="icon-ok icon-white" /> Purchase
                     </button>
                 </div>

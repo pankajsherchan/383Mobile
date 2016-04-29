@@ -1,0 +1,85 @@
+﻿<div class="container-fluid" ng-init="update(cart.items)">
+    <div class="row-fluid">
+        <div class="span8">
+
+            <!-- items -->
+            <table class="table table-bordered" ng-init="updateBuy()">
+
+                <!-- header -->
+                <tr class="well">
+                    <td><b>Item</b></td>
+                    <td><b>Type</b></td>
+                    <td class="tdCenter"><b>Quantity</b></td>
+                    <td class="tdCenter">Time</td>
+                    <td class="tdRight"><b>Price</b></td>
+                </tr>
+                <!-- empty cart message -->
+                <tr ng-hide="cart.getTotalCount() > 0">
+                    <td class="tdCenter" colspan="4">
+                        Your cart is empty.
+                    </td>
+                </tr>
+                <!-- cart items -->
+                <tr ng-repeat="item in cart.items | orderBy:'Name'">
+                    <td>{{item.Name}}</td>
+                    <td>{{item.type}}</td>
+                    <td class="tdCenter">
+                        <div>
+                            {{item.inventoryCount}}
+                        </div>
+                    </td>
+                    <td class="tdCenter">
+                        <div>
+                            {{item.time}}
+                        </div>
+                    </td>
+                    <td class="tdRight">{{item.price * item.inventoryCount | currency}}</td>
+                </tr>
+
+                <!-- footer -->
+                <tr class="well">
+                    <td><b>Total</b></td>
+                    <td></td>
+                    <td class="tdCenter"><b>{{cart.getTotalCount()}}</b></td>
+                    <td></td>
+                    <td class="tdRight"><b>{{cart.getTotalPrice() | currency}}</b></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-5" style="text-align:center; border:groove; overflow:visible; float:right; overflow-wrap:normal; color:#808080; padding: 10px, 10px, 10px, 10px; font-size: 26px ">
+               Your Transaction is Complete.
+               Thank You for Your Order, and We Really Appreciate Your Business.
+               Enjoy Your Movie, and Don't Forget to Check Out Our Snack Bar.
+        </div>
+        <div class="col-md-5" style="text-align:center; border:groove; overflow:visible; float:left; overflow-wrap:normal; padding: 10px, 10px, 10px, 10px; font-size: 26px">
+                Scan The Box Below to Get a Copy of Your Purchase
+                <img src="http://www.clker.com/cliparts/9/v/N/A/A/6/upside-down-arrow.svg" style="height: 25px; width: 25px" />
+                <div>
+                    <img style="padding-bottom: 10px" ng-src="{{image}}" />
+                </div>
+        </div>
+    </div>
+    <!-- buttons -->
+    <div class="col-md-12" style="padding-top: 10px">
+
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-block btn-primary">
+                    <i class="icon-ok icon-white" /> Print Tickets
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-block btn-danger">
+                    <i class="icon-trash icon-white" /> Email Receipt
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-block"
+                        ng-click="cart.clearItems()"
+                        onclick="window.location.href='default.html'">
+                    <i class="icon-chevron-left" /> Done
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

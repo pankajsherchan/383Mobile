@@ -18,6 +18,10 @@ eventsApp.config(function($routeProvider) {
              templateUrl: 'app/views/UpComingMovies.html',
              controller: 'movieController'
          })
+        .when('/confirmation', {
+            templateUrl: 'app/views/confirmation.html',
+            controller: 'movieController'
+        })
         // route for the movie detail page
         .when('/movies/:Id', {
             templateUrl: 'app/views/movie.html',
