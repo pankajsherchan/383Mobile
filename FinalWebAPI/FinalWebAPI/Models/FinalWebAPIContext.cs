@@ -26,5 +26,9 @@ namespace FinalWebAPI.Models
         public System.Data.Entity.DbSet<FinalWebAPI.Models.Movie> Movies { get; set; }
 
         public System.Data.Entity.DbSet<FinalWebAPI.Models.Showtime> Showtimes { get; set; }
+
+        public System.Data.Entity.DbSet<FinalWebAPI.Models.PurchaseTicket> PurchaseTickets { get; set; }
+
+        public System.Data.Entity.DbSet<FinalWebAPI.Models.PurchaseTicketLineItem> PurchaseTicketLineItems { get; set; }
     }
 }

@@ -219,6 +219,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Barcode\BarcodeGenerator.cs" />
     <Compile Include="Controllers\API\MoviesController.cs" />
+    <Compile Include="Controllers\API\PurchaseTicketLineItemsController.cs" />
+    <Compile Include="Controllers\API\PurchaseTicketsController.cs" />
     <Compile Include="Controllers\API\ScreensController.cs" />
     <Compile Include="Controllers\API\ShowtimesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
