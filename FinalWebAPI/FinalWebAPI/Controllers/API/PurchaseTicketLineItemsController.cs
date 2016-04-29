@@ -70,6 +70,16 @@ namespace FinalWebAPI.Controllers.API
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
+        public IHttpActionResult UpdatePurchase(Movie movie, string email)
+        {
+
+
+            return null;
+
+
+        }
+
         // POST: api/PurchaseTicketLineItems
         [ResponseType(typeof(PurchaseTicketLineItem))]
         public IHttpActionResult PostPurchaseTicketLineItem(PurchaseTicketLineItem purchaseTicketLineItem)

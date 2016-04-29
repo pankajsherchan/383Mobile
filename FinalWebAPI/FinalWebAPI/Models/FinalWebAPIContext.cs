@@ -30,5 +30,7 @@ namespace FinalWebAPI.Models
         public System.Data.Entity.DbSet<FinalWebAPI.Models.PurchaseTicket> PurchaseTickets { get; set; }
 
         public System.Data.Entity.DbSet<FinalWebAPI.Models.PurchaseTicketLineItem> PurchaseTicketLineItems { get; set; }
+
+        public System.Data.Entity.DbSet<FinalWebAPI.Models.PurchaseDetail> PurchaseDetails { get; set; }
     }
 }

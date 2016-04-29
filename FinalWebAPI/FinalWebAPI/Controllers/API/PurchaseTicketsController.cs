@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FinalWebAPI.Models;
+using FinalWebAPI.Models.DTOs;
 
 namespace FinalWebAPI.Controllers.API
 {
@@ -17,24 +18,29 @@ namespace FinalWebAPI.Controllers.API
         private FinalWebAPIContext db = new FinalWebAPIContext();
 
         // GET: api/PurchaseTickets
-        public IQueryable<PurchaseTicket> GetPurchaseTickets()
-        {
-            return db.PurchaseTickets;
-        }
+        //public IQueryable<PurchaseTicket> GetPurchaseTickets()
+        //{
+        //    return db.PurchaseTickets;
+        //}
 
         // GET: api/PurchaseTickets/5
-        [ResponseType(typeof(PurchaseTicket))]
-        public IHttpActionResult GetPurchaseTicket(int id)
-        {
-            PurchaseTicket purchaseTicket = db.PurchaseTickets.Find(id);
-            if (purchaseTicket == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(PurchaseTicket))]
+        //public IHttpActionResult GetPurchaseTicket(int id)
+        //{
+        //    PurchaseTicket purchaseTicket = db.PurchaseTickets.Find(id);
+        //    if (purchaseTicket == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(purchaseTicket);
-        }
+        //    return Ok(purchaseTicket);
+        //}
 
+
+        //public HttpResponseMessage UpdateProducts([FromUri]string email, List<Product> products)
+        //{
+       // [HttpPost]
+      
         // PUT: api/PurchaseTickets/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPurchaseTicket(int id, PurchaseTicket purchaseTicket)

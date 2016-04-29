@@ -55,6 +55,16 @@
                 
             }
 
+            $scope.updatePurchase = function (email, updateMovie) {
+                $scope.buy = true;
+                $scope.waitMessage = "Please wait while we proccess your order.....";
+                $http.post("api/PurchaseDetails/Update?email=" + email, updateMovie).then(function (response) {
+                    $scope.cart.clearItems();
+                    $scope.waitMessage = "";
+                    $scope.buy = false;
+                })
+            }
+
             $scope.upcoming = function () {
                 $scope.waitMessage = "Please wait while we grab a list of movies.....";
                 $http.get("http://localhost:51269/api/movies/1").then(function (data) {

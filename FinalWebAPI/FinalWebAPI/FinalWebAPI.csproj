@@ -219,6 +219,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Barcode\BarcodeGenerator.cs" />
     <Compile Include="Controllers\API\MoviesController.cs" />
+    <Compile Include="Controllers\API\PurchaseDetailsController.cs" />
     <Compile Include="Controllers\API\PurchaseTicketLineItemsController.cs" />
     <Compile Include="Controllers\API\PurchaseTicketsController.cs" />
     <Compile Include="Controllers\API\ScreensController.cs" />
@@ -247,10 +248,20 @@
     <Compile Include="Migrations\201604190331425_modelchatarpatar.Designer.cs">
       <DependentUpon>201604190331425_modelchatarpatar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604291850423_Purchasemodelchanged.cs" />
+    <Compile Include="Migrations\201604291850423_Purchasemodelchanged.Designer.cs">
+      <DependentUpon>201604291850423_Purchasemodelchanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604292138113_PurchaseDetailAdded.cs" />
+    <Compile Include="Migrations\201604292138113_PurchaseDetailAdded.Designer.cs">
+      <DependentUpon>201604292138113_PurchaseDetailAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DTOs\PurchaseDTO.cs" />
     <Compile Include="Models\DTOs\ShowingDTO.cs" />
     <Compile Include="Models\FinalWebAPIContext.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\PurchaseDetail.cs" />
     <Compile Include="Models\PurchaseTicket.cs" />
     <Compile Include="Models\PurchaseTicketLineItem.cs" />
     <Compile Include="Models\Screen.cs" />
@@ -380,6 +391,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604190331425_modelchatarpatar.resx">
       <DependentUpon>201604190331425_modelchatarpatar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604291850423_Purchasemodelchanged.resx">
+      <DependentUpon>201604291850423_Purchasemodelchanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604292138113_PurchaseDetailAdded.resx">
+      <DependentUpon>201604292138113_PurchaseDetailAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
