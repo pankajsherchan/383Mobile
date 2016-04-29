@@ -12,6 +12,7 @@
             $scope.timeSelected = "";
             $scope.reset = "reset"
             $scope.check = false;
+            $scope.ScreenNumber = "";
             $scope.adult = 10.00;
             $scope.child = 5.00;
             $scope.old = 7.00;

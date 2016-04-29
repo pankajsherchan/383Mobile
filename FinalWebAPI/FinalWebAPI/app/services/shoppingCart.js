@@ -25,7 +25,7 @@ shoppingCart.prototype.loadItems = function () {
             for (var i = 0; i < items.length; i++) {
                 var item = items[i];
                 if (item.Id != null && item.Name != null && item.price != null && item.inventoryCount != null) {
-                    item = new cartItem(item.Id, item.Name, item.price, item.inventoryCount, item.type, item.time);
+                    item = new cartItem(item.Id, item.Name, item.price, item.inventoryCount, item.type, item.time, item.ScreenNumber);
                     this.items.push(item);
                 }
             }
@@ -45,7 +45,7 @@ shoppingCart.prototype.saveItems = function () {
 
 
 // adds an item to the cart
-shoppingCart.prototype.addItem = function (Id, Name, price, quantity, type, time) {
+shoppingCart.prototype.addItem = function (Id, Name, price, quantity, type, time,ScreenNumber) {
     quantity = this.toNumber(quantity);
     if (quantity != 0) {
 
@@ -53,7 +53,7 @@ shoppingCart.prototype.addItem = function (Id, Name, price, quantity, type, time
         var found = false;
         for (var i = 0; i < this.items.length && !found; i++) {
             var item = this.items[i];
-            if (item.Id == Id && item.price == price && item.time == time) {
+            if (item.Id == Id && item.price == price && item.time == time && item.ScreenNumber == ScreenNumber) {
                 found = true;
                 item.inventoryCount = this.toNumber(item.inventoryCount + quantity);
                 if (item.inventoryCount <= 0) {
@@ -64,7 +64,7 @@ shoppingCart.prototype.addItem = function (Id, Name, price, quantity, type, time
 
         // new item, add now
         if (!found) {
-            var item = new cartItem(Id, Name, price, quantity, type, time);
+            var item = new cartItem(Id, Name, price, quantity, type, time, ScreenNumber);
             this.items.push(item);
         }
 
@@ -147,12 +147,13 @@ function checkoutParameters(serviceName, options) {
 //----------------------------------------------------------------
 // items in the cart
 //
-function cartItem(Id, Name, price, quantity, type, time) {
+function cartItem(Id, Name, price, quantity, type, time, ScreenNumber) {
     this.Id = Id;
     this.Name = Name;
     this.price = price * 1;
     this.inventoryCount = quantity * 1;
     this.type = type;
     this.time = time;
+    this.ScreenNumber = ScreenNumber;
 }
 

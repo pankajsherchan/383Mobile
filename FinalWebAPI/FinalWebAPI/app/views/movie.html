@@ -52,28 +52,40 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-3">
-                            <button class="btn btn-block btn-success"
-                                    ng-disabled="!check"
-                                    ng-click="cart.addItem(movie.Id, movie.Name, adult, 1, 'adult', timeSelected); showtime.Screen.SeatCount = showtime.Screen.SeatCount - 1">
-                                <i class="icon-shopping-cart icon-white" /> Add Adult Ticket
-                            </button>
+                            
+                            <label ng-repeat="showtime in movie.showtimes" class="row" ng-form="subForm">
+                                <button class="btn btn-block btn-success"
+                                        ng-disabled="!check"
+                                        ng-click="cart.addItem(movie.Id, movie.Name, adult, 1, 'adult', timeSelected, showtime.Screen.ScreenNumber ); showtime.Screen.SeatCount = showtime.Screen.SeatCount - 1">
+                                    <i class="icon-shopping-cart icon-white" /> Add Adult Ticket
+                                </button>
+                            </label>
                         </div>
                         <div class="col-md-3">
+                            
+                            <label ng-repeat="showtime in movie.showtimes" class="row" ng-form="subForm">
                             <button class="btn btn-block btn-success"
                                     ng-disabled="!check"
-                                    ng-click="cart.addItem(movie.Id, movie.Name, child, 1, 'child', timeSelected); showtime.Screen.SeatCount =- 1">
+                                    ng-click="cart.addItem(movie.Id, movie.Name, child, 1, 'child', timeSelected ,showtime.Screen.ScreenNumber); showtime.Screen.SeatCount =- 1">
                                 <i class="icon-shopping-cart icon-white" /> Add Child Ticket
                             </button>
+                                </label>
                         </div>
                         <div class="col-md-3">
+                            
+                            <label ng-repeat="showtime in movie.showtimes" class="row" ng-form="subForm">
                             <button class="btn btn-block btn-success"
                                     ng-disabled="!check"
-                                    ng-click="cart.addItem(movie.Id, movie.Name, old, 1, 'Senior', timeSelected); showtime.Screen.SeatCount =- 1">
+                                    ng-click="cart.addItem(movie.Id, movie.Name, old, 1, 'Senior', timeSelected, showtime.Screen.ScreenNumber); showtime.Screen.SeatCount =- 1">
                                 <i class="icon-shopping-cart icon-white" /> Add Senior Ticket
                             </button>
+                                </label>
                         </div>
+                        
                     </div>
+                    
                 </div>
+                
                 <div class="col-md-12" style="padding-top:20px">
                     <div class="row">
                         <div class="col-md-3">
