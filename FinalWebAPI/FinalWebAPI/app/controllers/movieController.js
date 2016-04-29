@@ -9,6 +9,9 @@
             $scope.qrcodeString = "";
             $scope.qrcode = "";
             $scope.type = "";
+            $scope.timeSelected = "";
+            $scope.reset = "reset"
+            $scope.check = false;
             $scope.adult = 10.00;
             $scope.child = 5.00;
             $scope.old = 7.00;
@@ -28,9 +31,21 @@
                 })
             }
 
+            $scope.submitTime = function (time) {
+                $scope.timeSelected = time;
+                $scope.check = true;
+            }
+
+            $scope.uncheck = function () {
+                $scope.check = false;
+                $scope.timeSelected = "";
+
+                //if ($scope.checked == $event.target.value) $scope.checked = false
+            }
+
             $scope.update = function (qrcode) {
                 for (var i = 0; i < qrcode.length; i++) {
-                    $scope.qrcodeString += "\n Movie: " + qrcode[i].Name + " Type: " + qrcode[i].type + " Price: " + qrcode[i].price + "";
+                    $scope.qrcodeString += "\n [Movie: " + qrcode[i].Name + " Type: " + qrcode[i].type + " Price: " + qrcode[i].price + " Time: " + qrcode[i].time + "]";
                 }
 
                 $scope.image = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + $scope.qrcodeString;

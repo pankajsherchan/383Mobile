@@ -1,17 +1,37 @@
 ﻿<div ng-init="upcoming()">
     <h3>{{waitMessage}}</h3>
-    <h3 class="" style="">List of movies</h3>
+    <h1 class="" style="">List of Upcoming Movies</h1>
     <span style="padding-left: 10px">Search: </span><input ng-model="search">
     <p></p>
-    <div><a class="btn btn-danger btn-lg" role="button" href="#/">Cancel</a></div>
-
-
-    <div><a class="btn btn-success btn-lg" role="button" href="#/upComingMovies">Upcoming Movies</a></div>
+    <div>
+        <div class="row">
+            <div style="float:right">
+                <div>
+                    <b>Click Below to View the Items in Your Cart</b>
+                </div>
+                <div>
+                    <a href="default.html#/cart" title="View the Shopping Cart">
+                        <i class="icon-shopping-cart" />
+                        <b>- View Cart - {{cart.getTotalCount()}}</b> items, Total: <b>{{cart.getTotalPrice() | currency}}</b>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3"><a class="btn btn-success btn-lg" role="button" href="#/movieList">Back</a></div>
+                    <div class="col-md-3"><a ng-click="cart.clearItems()" class="btn btn-danger btn-lg" role="button" href="#/">Cancel</a></div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div ng-repeat="movie in movies  | filter:search" class="row">
         <br class="">
         <div class="col-xs-1 col-xs-3 text-center" style="right:50px; top:20px">
             <!--<a class="story-title" id="" href="#/movies/{{movie.id}}"><img alt="" src="img/{{movie.id}}.jpg" style="width:180px;height:260px"></a>-->
-            <a class="story-title" id="" href="#/movies/{{movie.Id}}"><img alt="" src="{{movie.Poster}}" style="width:180px;height:260px"></a>
+            <a class="story-title" id="" ><img alt="" src="{{movie.Poster}}" style="width:180px;height:260px"></a>
         </div>
         <div class="col-xs-10 col-xs-9" id="" style="left:80px; top:10px">
             <h3 class="" style="color:#ffffff">{{movie.Name}}</h3>

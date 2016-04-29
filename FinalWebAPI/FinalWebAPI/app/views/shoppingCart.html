@@ -10,6 +10,7 @@
                     <td><b>Item</b></td>
                     <td><b>Type</b></td>
                     <td class="tdCenter"><b>Quantity</b></td>
+                    <td class="tdCenter">Time</td>
                     <td></td>
                     <td class="tdRight"><b>Price</b></td>
                 </tr>
@@ -30,11 +31,16 @@
                             {{item.inventoryCount}}
                         </div>
                     </td>
+                    <td class="tdCenter">
+                        <div>
+                            {{item.time}}
+                        </div>
+                    </td>
                     <td>
                         <div>
                             <button class="btn btn-success" type="button" style="float: right"
                                     ng-disabled="item.inventoryCount < 0"
-                                    ng-click="cart.addItem(item.Id, item.Name, item.price, +1, item.type)">
+                                    ng-click="cart.addItem(item.Id, item.Name, item.price, +1, item.type, item.time)">
                                 +
                             </button>
                             <button class="btn btn-inverse" type="button" style="float: right"
@@ -50,6 +56,7 @@
                 <!-- footer -->
                 <tr class="well">
                     <td><b>Total</b></td>
+                    <td></td>
                     <td class="tdCenter"><b>{{cart.getTotalCount()}}</b></td>
                     <td></td>
                     <td></td>
@@ -66,42 +73,37 @@
         </div>
 
         <!-- buttons -->
-        <div class="span8" ng-hide="buy">
-            <div>
-                <b>Please enter your email address to continue with purchase:</b>
-                <label name="label">
-                    <input class="span3 text-center" type="email" name="input" ng-model="emailInfo.text" ng-pattern="emailPattern">
-                </label>
-            </div>
-            <div>
-                <button class="btn btn-block btn-primary"
-                        ng-click="update(cart.items)"
-                        ng-disabled="cart.getTotalCount() < 1">
-                    <i class="icon-ok icon-white" /> Purchase
-                </button>
-            </div>
-            <div>
-                <img   ng-src ="{{image}}" />
+        <div class="col-md-12">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-primary"
+                            ng-click="update(cart.items)"
+                            ng-disabled="cart.getTotalCount() < 1">
+                        <i class="icon-ok icon-white" /> Purchase
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-block"
+                            onclick="window.location.href='default.html#/movieList'">
+                        <i class="icon-chevron-left" /> Back
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-danger"
+                            ng-click="cart.clearItems()"
+                            ng-disabled="cart.getTotalCount() < 1">
+                        <i class="icon-trash icon-white" /> clear cart
+                    </button>
+                </div>
+                <div>
+                    <img ng-src="{{image}}" />
+                </div>
             </div>
         </div>
-        <br />
-        <br />
-        <p class="text-info" ng-hide="buy">
-            <button class="btn btn-block"
-                    onclick="window.location.href='default.html'">
-                <i class="icon-chevron-left" /> back to store
-            </button>
-            <br />
-            <br />
-            <button class="btn btn-block btn-danger"
-                    ng-click="cart.clearItems()"
-                    ng-disabled="cart.getTotalCount() < 1">
-                <i class="icon-trash icon-white" /> clear cart
-            </button>
-        </p>
         <div>
             <h3 style="text-align:center">{{waitMessage}}</h3>
-        </div>
+        </div> 
     </div>
 </div>
 
