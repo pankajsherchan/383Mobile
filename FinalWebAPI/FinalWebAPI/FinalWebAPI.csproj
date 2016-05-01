@@ -182,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIHelper\CheckRole.cs" />
+    <Compile Include="APIHelper\Gmailer.cs" />
     <Compile Include="APIHelper\MovieAPI.cs" />
     <Compile Include="APIHelper\MovieAPI1.cs" />
     <Compile Include="APIHelper\MovieName.cs" />

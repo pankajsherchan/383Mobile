@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using FinalWebAPI.Models;
 using FinalWebAPI.Models.DTOs;
+using FinalWebAPI.APIHelper;
 
 namespace FinalWebAPI.Controllers.API
 {
@@ -60,9 +61,15 @@ namespace FinalWebAPI.Controllers.API
 
                 db.PurchaseDetails.Add(purchased);
 
-                try
-                {
+
+               
+                
+
+            try
+            {
                     db.SaveChanges();
+                    Gmailer mail = new Gmailer();
+            mail.sendEmail(email, movies);
 
 
                 }
