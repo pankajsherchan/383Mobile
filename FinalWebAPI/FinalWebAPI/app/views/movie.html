@@ -29,7 +29,7 @@
                     <form name="mainForm">
                         <div>
                             <label ng-repeat="showtime in movie.showtimes" class="row" ng-form="subForm">
-                                <b class="" id="" style="color:#0c0c27; font-size: 16px"> <span>{{showtime.StartTime}} - Seats remaining: {{showtime.Screen.SeatCount - cart.getTotalCount(movie.Id, showtime.StartTime)}} - Screen Number:  {{showtime.Screen.ScreenNumber}}</span></b>
+                                <b class="" id="" style="color:#0c0c27; font-size: 16px"> <span>Date: {{showtime.StartDate | date: mm/dd/yyyy}} - Time: {{showtime.StartTime}} - Seats remaining: {{showtime.Screen.SeatCount - cart.getTotalCount(movie.Id, showtime.StartTime)}} - Screen:  {{showtime.Screen.ScreenNumber}}</span></b>
                                 <input type="radio" ng-disabled="check" ng-click="submitTime(showtime.StartTime)"  /> Select This Time?
                             </label>
                         </div>

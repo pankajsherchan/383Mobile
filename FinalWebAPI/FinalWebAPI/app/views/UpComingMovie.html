@@ -1,0 +1,111 @@
+﻿<div class="row">
+    <div style="float:right">
+        <div>
+            <b>Click Below to View the Items in Your Cart</b>
+        </div>
+        <div>
+            <a href="default.html#/cart" title="View the Shopping Cart">
+                <i class="icon-shopping-cart" />
+                <b>- View Cart - {{cart.getTotalCount()}}</b> items, Total: <b>{{cart.getTotalPrice() | currency}}</b>
+            </a>
+        </div>
+    </div>
+    <div class="col-xs-1 col-xs-3 text-center" style="right:50px; top:20px">
+        <a class="story-title" id="" href=""><img alt="" src="{{movie.Poster}}" style="width:180px;height:260px"></a>
+
+    </div>
+    <div class="col-xs-10 col-xs-9" id="" style="left:80px; top:10px">
+        <h3 class="" style="color:#ffffff">{{movie.Name}}</h3>
+
+        <div class="row">
+            <div class="col-xs-9 col-xs-10">
+                <span class="" id="" style="color:#0c0c27; font-size: 16px">{{movie.Description}}</span>
+                <br />
+                <br />
+                <br />
+            </div>
+            <div class="col-xs-9 col-xs-9"><label>Show Times</label></div>
+            <div>
+                <form name="mainForm">
+                    <div>
+                        <label ng-repeat="showtime in movie.showtimes" class="row" ng-form="subForm">
+                            <b class="" id="" style="color:#0c0c27; font-size: 16px"> <span>{{showtime.StartTime}} - Seats remaining: {{showtime.Screen.SeatCount - cart.getTotalCount(movie.Id, showtime.StartTime)}} - Screen Number:  {{showtime.Screen.ScreenNumber}}</span></b>
+                            <input type="radio" ng-disabled="check" ng-click="submitTime(showtime.StartTime)" /> Select This Time?
+                        </label>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input type="reset" class="btn btn-block btn-success" value="Clear Selected Time" ng-click="uncheck()" />
+                            </div>
+                        </div>
+                    </div>
+                    <span>{{timeSelected}}</span>
+                </form>
+            </div>
+        </div>
+        <br class="">
+        <br class="">
+        <div>
+            <p></p>
+            <!-- buttons -->
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <!--<label ng-repeat="showtime in movie.showtimes" class="row" ng-form="subForm">-->
+                        <button class="btn btn-block btn-success"
+                                ng-disabled="!check"
+                                ng-click="cart.addItem(movie.Id, movie.Name, adult, 1, 'adult', timeSelected, showtime.Screen.ScreenNumber ); showtime.Screen.SeatCount = showtime.Screen.SeatCount - 1">
+                            <i class="icon-shopping-cart icon-white" /> Add Adult Ticket
+                        </button>
+                        <!--</label>-->
+                    </div>
+                    <div class="col-md-3">
+
+                        <!--<label ng-repeat="showtime in movie.showtimes" class="row" ng-form="subForm">-->
+                        <button class="btn btn-block btn-success"
+                                ng-disabled="!check"
+                                ng-click="cart.addItem(movie.Id, movie.Name, child, 1, 'child', timeSelected ,showtime.Screen.ScreenNumber); showtime.Screen.SeatCount =- 1">
+                            <i class="icon-shopping-cart icon-white" /> Add Child Ticket
+                        </button>
+                        <!--</label>-->
+                    </div>
+                    <div class="col-md-3">
+
+                        <!--<label ng-repeat="showtime in movie.showtimes" class="row" ng-form="subForm">-->
+                        <button class="btn btn-block btn-success"
+                                ng-disabled="!check"
+                                ng-click="cart.addItem(movie.Id, movie.Name, old, 1, 'Senior', timeSelected, showtime.Screen.ScreenNumber); showtime.Screen.SeatCount =- 1">
+                            <i class="icon-shopping-cart icon-white" /> Add Senior Ticket
+                        </button>
+                        <!--</label>-->
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-12" style="padding-top:20px">
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-block"
+                                onclick="window.location.href='default.html#/movieList'">
+                            <i class="icon-chevron-left" /> Back
+                        </button>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                        <button class="btn btn-block btn-danger"
+                                ng-click="cart.clearItems()"
+                                onclick="window.location.href='default.html'">
+                            <i class="icon-chevron-left" /> Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container"></div>
+<div class="row"></div>

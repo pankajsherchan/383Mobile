@@ -56,7 +56,9 @@ namespace FinalWebAPI.Controllers.API
                 imdbRating = x.imdbRating,
                 Year = x.Year,
                 Description = x.Description,
-                showtimes = x.Showtimes.ToList<Showtime>()
+                //showtimes = x.Showtimes.ToList<Showtime>()
+                showtimes = db.Showtimes.Where(d => d.StartDate == DateTime.Today).ToList()
+        
 
             }).ToList<ShowingDTO>();
 
@@ -88,8 +90,7 @@ namespace FinalWebAPI.Controllers.API
                 imdbRating = x.imdbRating,
                 Year = x.Year,
                 Description = x.Description,
-                showtimes = x.Showtimes.ToList<Showtime>()
-
+                showtimes = db.Showtimes.Where(d => d.StartDate != DateTime.Today && d.StartDate > DateTime.Today).ToList()
             }).ToList<ShowingDTO>();
 
             if (showingMovies == null)
