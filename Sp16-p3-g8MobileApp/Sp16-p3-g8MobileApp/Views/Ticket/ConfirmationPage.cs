@@ -15,9 +15,14 @@ namespace Sp16p3g8MobileApp {
 
             Content = new StackLayout {
                 Children = {
-                    new Button() { Text="Go back" }, new WebView() { Source = URL, VerticalOptions=LayoutOptions.FillAndExpand }
+                    #if __IOS__
+                    new Button {Text="Go Back" }, 
+                    #endif
+                      new WebView() { Source = URL, VerticalOptions=LayoutOptions.FillAndExpand }
                 }, Spacing=10
             };
+            
+
         }
     }
 }
