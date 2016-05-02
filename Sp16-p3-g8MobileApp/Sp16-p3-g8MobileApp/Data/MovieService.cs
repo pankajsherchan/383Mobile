@@ -12,48 +12,65 @@ using Sp16p3g8MobileApp.Models;
 
 namespace Sp16p3g8MobileApp
 {
-	public class MovieService : MovieServiceInterface
-	{
-		HttpClient client;
-		public List<Showtime> Items { get; private set; }
+    public class MovieService : MovieServiceInterface
+    {
+        HttpClient client;
+        public List<Showtime> Items { get; private set; }
+        List<Showtime> results = new List<Showtime>();
 
         ObservableCollection<Showtime> showtimes = new ObservableCollection<Showtime>();
-        public MovieService ()
-		{
-			client = new HttpClient ();
-		}
+        public MovieService()
+        {
+            client = new HttpClient();
+        }
 
         public async Task<List<Showtime>> GetMovieAsync()
         {
-           // var client = new RestClient("http://192.168.1.40:51269/");
-          //  var client = new RestClient("http://192.168.1.17:51269/");
-            var client = new RestClient("http://147.174.168.44:51269/");
+            // var client = new RestClient("http://192.168.1.40:51269/");
+            //  var client = new RestClient("http://192.168.1.17:51269/");
+            var client = new RestClient("http://147.174.187.34:51269/");
             var request = new RestRequest("api/showtimes", Method.GET);
 
             var response = await client.Execute<List<Showtime>>(request);
-            List<Showtime> results = new List<Showtime>();
+
             results = response.Data.OrderBy(m => m.Id).ToList();
 
             foreach (var showtime in results)
             {
-                showtimes.Add(new Showtime()
-
+                if (check(showtime))
                 {
-                    Id = showtime.Id,
-                    MovieId = showtime.MovieId,
-                    Movie = showtime.Movie,
-                    ScreenId = showtime.ScreenId,
-                    StartDate = showtime.StartDate,
-                    StartTime = showtime.StartTime,
-                   
-                    Screen = showtime.Screen
-                });
+                    showtimes.Add(new Showtime()
 
+                    {
+                        Id = showtime.Id,
+                        MovieId = showtime.MovieId,
+                        Movie = showtime.Movie,
+                        ScreenId = showtime.ScreenId,
+                        StartDate = showtime.StartDate,
+                        StartTime = showtime.StartTime,
+
+                        Screen = showtime.Screen
+                    });
+                }
 
             }
             return showtimes.ToList();
         }
-      
+
+        public Boolean check(Showtime showtime)
+         {
+            foreach (var show in showtimes)
+            {
+                if (show.MovieId == showtime.MovieId)
+                {
+                    return false;
+                }
+            }
+            return true;
+
+    }
+}
+}
 
         //public async Task<List<Movie>> GetMovieAsync ()
         //{
@@ -76,5 +93,4 @@ namespace Sp16p3g8MobileApp
         //			return Items;
         //		}
 
-    }
-}
+    

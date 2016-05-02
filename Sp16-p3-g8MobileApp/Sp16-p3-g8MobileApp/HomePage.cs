@@ -16,7 +16,7 @@ namespace Sp16p3g8MobileApp
 			public HomePage ()
 			{ 
 				buttonScanDefaultOverlay = new Button {
-					Text = "Scan with Default Overlay",
+					Text = "Let's Scan",
 				};
 
 				buttonScanDefaultOverlay.Clicked += async delegate {
@@ -42,7 +42,7 @@ namespace Sp16p3g8MobileApp
 				};
 
 				var stack = new StackLayout ();
-				stack.Children.Add (buttonGenerateBarcode);
+			//	stack.Children.Add (buttonGenerateBarcode);
 				stack.Children.Add (buttonScanDefaultOverlay);
 
 				Content = stack;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sp16p3g8MobileApp.Views;
+using System;
 
 using Xamarin.Forms;
 
@@ -10,7 +11,7 @@ namespace Sp16p3g8MobileApp
 		{
 			
 			//start up page
-			MainPage = new NavigationPage(new MovieListPage());
+			MainPage = new NavigationPage(new Tab());
 
 		}
 

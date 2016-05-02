@@ -34,6 +34,7 @@
   <ItemGroup>
     <Compile Include="Data\ITicketStorage.cs" />
     <Compile Include="Models\Screen.cs" />
+    <Compile Include="Models\ShowingDTO.cs" />
     <Compile Include="Models\Showtime.cs" />
     <Compile Include="Sp16-p3-g8MobileApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -50,6 +51,8 @@
     <Compile Include="Views\Movie\MovieEditPage.cs" />
     <Compile Include="HomePage.cs" />
     <Compile Include="BarcodePage.cs" />
+    <Compile Include="Views\Movie\PurchaseHistory.cs" />
+    <Compile Include="Views\Tab.cs" />
     <Compile Include="Views\Ticket\ConfirmationPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
