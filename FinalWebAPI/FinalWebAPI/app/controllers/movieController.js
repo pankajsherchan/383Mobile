@@ -17,6 +17,10 @@
             $scope.child = 5.00;
             $scope.old = 7.00;
             $scope.cart = DataService.cart;
+            $scope.emailInfo = {
+                text: ''
+            }
+            $scope.emailPattern = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
             MovieService.getMovies()
           .success(function (response) {
               $scope.data = response;
@@ -60,7 +64,7 @@
                 $scope.buy = true;
                 $scope.waitMessage = "Please wait while we proccess your order.....";
                 $http.post("api/PurchaseDetails/Update?email=" + email, updateMovie).then(function (response) {
-                    $scope.cart.clearItems();
+                    //$scope.cart.clearItems();
                     $scope.waitMessage = "";
                     $scope.buy = false;
                 })

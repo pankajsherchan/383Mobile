@@ -45,7 +45,7 @@
                             </button>
                             <button class="btn btn-inverse" type="button" style="float: right"
                                     ng-disabled="item.inventoryCount < 1"
-                                    ng-click="cart.addItem(item.Id, item.Name, item.price, -1, item.type)">
+                                    ng-click="cart.addItem(item.Id, item.Name, item.price, -1, item.type, item.time)">
                                 -
                             </button>
                         </div>
@@ -67,13 +67,17 @@
 
         <!-- buttons -->
         <div class="col-md-12">
-
+            <div>
+                <b>Please enter your email address to continue with purchase:</b>
+                <label name="label">
+                    <input class="span3 text-center" type="email" name="input" ng-model="emailInfo.text" ng-pattern="emailPattern">
+                </label>
+            </div>
             <div class="row">
                 <div class="col-md-4">
                     <button class="btn btn-block btn-primary"
-                            
-                            ng-disabled="cart.getTotalCount() < 1"
-                            
+                            ng-disabled="!emailInfo.text || cart.getTotalCount() < 1"
+                            ng-click="updatePurchase(emailInfo.text, cart.items)"
                             onclick="window.location.href = 'default.html#/confirmation'">
                             <!--ng-click="updatePurchase(cart.items, "pankaj.sherchan@selu.edu")"-->
                             
