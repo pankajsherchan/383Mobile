@@ -46,6 +46,15 @@
             </div>
             <br class="">
             <br class="">
+            <div class="row">
+                <div class="col-xs-9 col-xs-10">
+                    <label ng-repeat="showtime in movie.showtimes" class="row" ng-form="subForm">
+                        <b class="" id="" style="color:#0c0c27; font-size: 16px"> <span>Date: {{showtime.StartDate | date: mm/dd/yyyy}} - Time: {{showtime.StartTime}} - Screen Number:  {{showtime.Screen.ScreenNumber}}</span></b>
+                    </label>
+                </div>
+                <div> </div>
+                <div class="col-xs-3"></div>
+            </div>
         </div>
     </div>
     <!--/container-->
