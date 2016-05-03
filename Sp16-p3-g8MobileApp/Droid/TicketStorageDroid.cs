@@ -14,10 +14,13 @@ using Sp16p3g8MobileApp;
 using Xamarin.Forms;
 using Newtonsoft.Json;
 
-[assembly: Dependency(typeof(ITicketStorage))]
+[assembly: Dependency(typeof(Sp16p3g8MobileApp.Droid.TicketStorageDroid))]
 namespace Sp16p3g8MobileApp.Droid {
     class TicketStorageDroid : ITicketStorage {
         
+        public TicketStorageDroid() {
+
+        }
 
         public List<string> LoadCodes(string filename) {
             
