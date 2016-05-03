@@ -11,6 +11,8 @@
                     <td><b>Type</b></td>
                     <td class="tdCenter"><b>Quantity</b></td>
                     <td class="tdCenter">Time</td>
+                    <td class="tdCenter">Date</td>
+                    <td class="tdCenter">Screen</td>
                     <td></td>
                     <td class="tdRight"><b>Price</b></td>
                 </tr>
@@ -34,6 +36,16 @@
                     <td class="tdCenter">
                         <div>
                             {{item.time}}
+                        </div>
+                    </td>
+                    <td class="tdCenter">
+                        <div>
+                            {{item.date | date: mm/dd/yyyy}}
+                        </div>
+                    </td>
+                    <td class="tdCenter">
+                        <div>
+                            {{item.ScreenNumber}}
                         </div>
                     </td>
                     <td>
@@ -60,6 +72,7 @@
                     <td class="tdCenter"><b>{{cart.getTotalCount()}}</b></td>
                     <td></td>
                     <td></td>
+                    <td></td><td></td>
                     <td class="tdRight"><b>{{cart.getTotalPrice() | currency}}</b></td>
                 </tr>
             </table>

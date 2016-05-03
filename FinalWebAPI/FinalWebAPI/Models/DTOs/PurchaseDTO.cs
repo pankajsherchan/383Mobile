@@ -18,5 +18,7 @@ namespace FinalWebAPI.Models.DTOs
         public int InventoryCount { get; set; }
 
         public string ScreenNumber { get; set; }
+
+        public string date { get; set; }
     }
 }

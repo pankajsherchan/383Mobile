@@ -11,9 +11,12 @@ using Newtonsoft.Json;
 using Xamarin.Forms.Platform.iOS;
 using Mono;
 
-[assembly: Dependency(typeof(ITicketStorage))]
+[assembly: Dependency(typeof(Sp16p3g8MobileApp.iOS.TicketStorageIOS))]
 namespace Sp16p3g8MobileApp.iOS {
     class TicketStorageIOS : ITicketStorage {
+        public TicketStorageIOS() {
+
+        }
         public List<string> LoadCodes(string filename) {           
 
             var documentspath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
