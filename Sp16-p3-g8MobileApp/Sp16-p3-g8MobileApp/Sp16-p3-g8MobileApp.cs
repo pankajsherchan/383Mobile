@@ -11,7 +11,7 @@ namespace Sp16p3g8MobileApp
 		{
 			
 			//start up page
-			MainPage = new NavigationPage(new Tab());
+			MainPage = new NavigationPage(new PurchasePage());
 
 		}
 

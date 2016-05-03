@@ -33,6 +33,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Data\ITicketStorage.cs" />
+    <Compile Include="Data\PurchaseHistory.cs" />
+    <Compile Include="Models\PurchaseDetail.cs" />
     <Compile Include="Models\Screen.cs" />
     <Compile Include="Models\ShowingDTO.cs" />
     <Compile Include="Models\Showtime.cs" />
@@ -51,7 +53,8 @@
     <Compile Include="Views\Movie\MovieEditPage.cs" />
     <Compile Include="HomePage.cs" />
     <Compile Include="BarcodePage.cs" />
-    <Compile Include="Views\Movie\PurchaseHistory.cs" />
+    <Compile Include="Views\Movie\PurchasePage.cs" />
+    <Compile Include="Views\Movie\PurchaseTemplate.cs" />
     <Compile Include="Views\Tab.cs" />
     <Compile Include="Views\Ticket\ConfirmationPage.cs" />
   </ItemGroup>

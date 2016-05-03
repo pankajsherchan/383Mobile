@@ -22,7 +22,6 @@ namespace Sp16p3g8MobileApp.Models
             public string imdbRating { get; set; }
             public string Year { get; set; }
 
-
             public List<Showtime> showtimes { get; set; }
 
         }

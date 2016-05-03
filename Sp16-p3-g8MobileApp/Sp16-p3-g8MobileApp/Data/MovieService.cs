@@ -17,11 +17,44 @@ namespace Sp16p3g8MobileApp
         HttpClient client;
         public List<Showtime> Items { get; private set; }
         List<Showtime> results = new List<Showtime>();
-
+        List<PurchaseDetail> results1 = new List<PurchaseDetail>();
+        ObservableCollection<PurchaseDetail> purchaseHistory = new ObservableCollection<PurchaseDetail>();
         ObservableCollection<Showtime> showtimes = new ObservableCollection<Showtime>();
         public MovieService()
         {
             client = new HttpClient();
+        }
+
+        public async Task<List<PurchaseDetail>> GetPurchaseAsync()
+        {
+
+            // var client = new RestClient("http://192.168.1.40:51269/");
+            //  var client = new RestClient("http://192.168.1.17:51269/");
+            var client = new RestClient("http://147.174.187.34:51269/");
+            var request = new RestRequest("api/PurchaseDetails", Method.GET);
+
+            var response = await client.Execute<List<PurchaseDetail>>(request);
+
+            results1 = response.Data.OrderBy(m => m.Id).ToList();
+
+            foreach (var item in results1)
+            {
+                purchaseHistory.Add(new PurchaseDetail()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Price = item.Price,
+                    ScreenNumber = item.ScreenNumber,
+                    InventoryCount = item.InventoryCount,
+                    time = item.time,
+                    type = item.type,
+                    date = item.date
+
+                });
+
+
+            }
+            return purchaseHistory.ToList();
         }
 
         public async Task<List<Showtime>> GetMovieAsync()
@@ -30,8 +63,10 @@ namespace Sp16p3g8MobileApp
             //  var client = new RestClient("http://192.168.1.17:51269/");
             var client = new RestClient("http://147.174.187.34:51269/");
             var request = new RestRequest("api/showtimes", Method.GET);
+            var request1 = new RestRequest("api/movies", Method.GET);
 
             var response = await client.Execute<List<Showtime>>(request);
+            var response1 = await client.Execute<List<ShowingDTO>>(request1);
 
             results = response.Data.OrderBy(m => m.Id).ToList();
 

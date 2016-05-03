@@ -20,7 +20,7 @@ namespace Sp16p3g8MobileApp.Views
                 Title = "383 Management App";
                 tab1Page = new MovieListPage() { Title = "Movies" };
                 tab2Page = new HomePage() { Title = "Scan your code" };
-                tab3Page = new PurchaseHistory() { Title = "Your Purchase History" };
+                tab3Page = new PurchasePage() { Title = "Your Purchase History" };
 
                 Children.Add(tab1Page);
                 Children.Add(tab2Page);
