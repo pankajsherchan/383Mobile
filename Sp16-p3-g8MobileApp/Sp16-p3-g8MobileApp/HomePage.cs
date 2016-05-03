@@ -26,7 +26,7 @@ namespace Sp16p3g8MobileApp {
                         DisplayAlert("Scanned Barcode" , result.Text , "OK");
                         if (Validate(result.Text , DependencyService.Get<ITicketStorage>().LoadCodes(Constant.LocalFile))) {
                             DependencyService.Get<ITicketStorage>().Save(Constant.LocalFile , result.Text);
-                            new ConfirmationPage(result.Text);
+                            //new ConfirmationPage(result.Text); //This isn't the right way to make it, however the page does work
                         }
                     });
                 };
