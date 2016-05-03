@@ -25,7 +25,7 @@ shoppingCart.prototype.loadItems = function () {
             for (var i = 0; i < items.length; i++) {
                 var item = items[i];
                 if (item.Id != null && item.Name != null && item.price != null && item.inventoryCount != null) {
-                    item = new cartItem(item.Id, item.Name, item.price, item.inventoryCount, item.type, item.time, item.ScreenNumber);
+                    item = new cartItem(item.Id, item.Name, item.price, item.inventoryCount, item.type, item.time, item.ScreenNumber, item.date);
                     this.items.push(item);
                 }
             }
@@ -45,7 +45,7 @@ shoppingCart.prototype.saveItems = function () {
 
 
 // adds an item to the cart
-shoppingCart.prototype.addItem = function (Id, Name, price, quantity, type, time,ScreenNumber) {
+shoppingCart.prototype.addItem = function (Id, Name, price, quantity, type, time,ScreenNumber, date) {
     quantity = this.toNumber(quantity);
     if (quantity != 0) {
 
@@ -53,7 +53,7 @@ shoppingCart.prototype.addItem = function (Id, Name, price, quantity, type, time
         var found = false;
         for (var i = 0; i < this.items.length && !found; i++) {
             var item = this.items[i];
-            if (item.Id == Id && item.price == price && item.time == time && item.ScreenNumber == ScreenNumber) {
+            if (item.Id == Id && item.price == price && item.time == time && item.ScreenNumber == ScreenNumber && item.date == date) {
                 found = true;
                 item.inventoryCount = this.toNumber(item.inventoryCount + quantity);
                 if (item.inventoryCount <= 0) {
@@ -64,7 +64,7 @@ shoppingCart.prototype.addItem = function (Id, Name, price, quantity, type, time
 
         // new item, add now
         if (!found) {
-            var item = new cartItem(Id, Name, price, quantity, type, time, ScreenNumber);
+            var item = new cartItem(Id, Name, price, quantity, type, time, ScreenNumber, date);
             this.items.push(item);
         }
 
@@ -86,11 +86,11 @@ shoppingCart.prototype.getTotalPrice = function (Id) {
 }
 
 // get the total price for all items currently in the cart
-shoppingCart.prototype.getTotalCount = function (Id, starttime) {
+shoppingCart.prototype.getTotalCount = function (Id, starttime, ScreenNumber) {
     var count = 0;
     for (var i = 0; i < this.items.length; i++) {
         var item = this.items[i];
-        if (Id == null || item.Id == Id && item.time == starttime) {
+        if (Id == null || item.Id == Id && item.time == starttime && item.ScreenNumber == ScreenNumber) {
             count += this.toNumber(item.inventoryCount);
         }
     }
@@ -147,7 +147,7 @@ function checkoutParameters(serviceName, options) {
 //----------------------------------------------------------------
 // items in the cart
 //
-function cartItem(Id, Name, price, quantity, type, time, ScreenNumber) {
+function cartItem(Id, Name, price, quantity, type, time, ScreenNumber, date) {
     this.Id = Id;
     this.Name = Name;
     this.price = price * 1;
@@ -155,5 +155,6 @@ function cartItem(Id, Name, price, quantity, type, time, ScreenNumber) {
     this.type = type;
     this.time = time;
     this.ScreenNumber = ScreenNumber;
+    this.date = date;
 }
 

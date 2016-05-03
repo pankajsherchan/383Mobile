@@ -25,7 +25,7 @@ namespace FinalWebAPI.APIHelper
                 int count = 1;
                 foreach (var item in movies)
                 {
-                    mail.Body += " **Movie " + count + "  Name: " + "  " + item.Name + "**  Quantity:  " + item.InventoryCount + " **Price:   " + item.Price + "   " + "\r\n" + Environment.NewLine;
+                    mail.Body += " **Movie " + count + "  **Name: " + "  " + item.Name + " **Quantity:  " + item.InventoryCount + " **Time: " + item.time + " **Date: " + item.date + " **Screen: " + item.ScreenNumber + " **Price:   " + item.Price + "   " + "\r\n" + Environment.NewLine;
                     count++;
                     // mail.Body = print(product.Name);
                 }
